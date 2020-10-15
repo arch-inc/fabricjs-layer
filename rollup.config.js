@@ -16,14 +16,16 @@ export default [
         format: "umd",
         name: "eraser",
         globals: {
-          fabric: "fabric"
+          fabric: "fabric",
+          "@arch-inc/fabricjs-psbrush": "psbrush"
         }
       },
       {
         file: pkg.module,
         format: "es",
         globals: {
-          fabric: "fabric"
+          fabric: "fabric",
+          "@arch-inc/fabricjs-psbrush": "psbrush"
         }
       }
     ],
