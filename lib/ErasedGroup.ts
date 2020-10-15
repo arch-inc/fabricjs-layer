@@ -1,4 +1,6 @@
-import { fabric } from "fabric";
+/// <reference types="fabric" />
+const fabricjs: typeof fabric =
+  typeof fabric === "undefined" ? require("fabric").fabric : fabric;
 
 export interface ErasedGroupIface extends fabric.Group {
   original: fabric.Group;
@@ -8,7 +10,7 @@ export interface ErasedGroupIface extends fabric.Group {
   fromObject?: (object: object, callback: Function) => void;
 }
 
-const ErasedGroupImpl = <any>fabric.util.createClass(fabric.Group, {
+const ErasedGroupImpl = <any>fabricjs.util.createClass(fabricjs.Group, {
   original: null,
   erasedPath: null,
   type: "ErasedGroup",
@@ -102,7 +104,7 @@ const ErasedGroup: {
 } = ErasedGroupImpl;
 
 ErasedGroup.fromObject = function (object, callback) {
-  fabric.util.enlivenObjects(
+  fabricjs.util.enlivenObjects(
     object.objects,
     (enlivenedObjects) => {
       const o = enlivenedObjects.find((obj) => obj.type === "group");
@@ -115,5 +117,5 @@ ErasedGroup.fromObject = function (object, callback) {
   );
 };
 
-(fabric as any).ErasedGroup = ErasedGroup;
+(fabricjs as any).ErasedGroup = ErasedGroup;
 export default ErasedGroup;

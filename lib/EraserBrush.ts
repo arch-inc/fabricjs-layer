@@ -1,4 +1,7 @@
-import { fabric } from "fabric";
+/// <reference types="fabric" />
+const fabricjs: typeof fabric =
+  typeof fabric === "undefined" ? require("fabric").fabric : fabric;
+
 import { Simplify } from "@arch-inc/fabricjs-psbrush";
 
 import ErasedGroup from "./ErasedGroup";
@@ -23,7 +26,7 @@ export interface EraserBrushIface extends fabric.BaseBrush {
 const EraserBrush: new (
   canvas: fabric.StaticCanvas,
   options?: fabric.ICanvasOptions
-) => EraserBrushIface = <any>fabric.util.createClass(fabric.PencilBrush, {
+) => EraserBrushIface = <any>fabricjs.util.createClass(fabricjs.PencilBrush, {
   rasterize: true,
   simplify: null,
   simplifyTolerance: 0,
@@ -127,7 +130,7 @@ const EraserBrush: new (
 
     if (overlapped.objects.length > 0) {
       // merge those objects into a group
-      const mergedGroup = new fabric.Group(overlapped.objects);
+      const mergedGroup = new fabricjs.Group(overlapped.objects);
       const erasedGroup = new ErasedGroup(mergedGroup, path, options);
 
       if (this.rasterize) {
@@ -135,12 +138,12 @@ const EraserBrush: new (
         const newData = erasedGroup.toDataURL({
           withoutTransform: true,
         });
-        fabric.Image.fromURL(newData, (fabricImage) => {
+        fabricjs.Image.fromURL(newData, (fabricImage) => {
           fabricImage.set(options);
 
           // remove the old objects then add the new image
           parent.remove(...overlapped.objects);
-          if (parent instanceof fabric.Group) {
+          if (parent instanceof fabricjs.Group) {
             parent.addWithUpdate(fabricImage);
           } else {
             parent.add(fabricImage);
@@ -148,7 +151,7 @@ const EraserBrush: new (
         });
       } else {
         parent.remove(...overlapped.objects);
-        if (parent instanceof fabric.Group) {
+        if (parent instanceof fabricjs.Group) {
           parent.addWithUpdate(erasedGroup);
 
           // virtually call newPath.addWithUpdate(mergedGroup)
@@ -175,4 +178,5 @@ const EraserBrush: new (
   },
 });
 
+(fabricjs as any).EraserBrush = EraserBrush;
 export default EraserBrush;
