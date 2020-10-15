@@ -3,11 +3,11 @@
 [![build](https://github.com/arch-inc/fabricjs-eraser/workflows/npm-publish/badge.svg)](https://github.com/arch-inc/fabricjs-eraser/actions?query=workflow%3Anpm-publish)
 [![npm version](https://img.shields.io/npm/v/@arch-inc/fabricjs-eraser)](https://www.npmjs.com/package/@arch-inc/fabricjs-eraser)
 
-**fabricjs-eraser** is a lightweight pressure-sensitive brush implementation for Fabric.js v3.x and v4.x.
+**fabricjs-eraser** is a simple eraser implementation for Fabric.js v3.x and v4.x.
 
-**fabricjs-eraser** は Fabric.js  v3.x および v4.x 用の軽量な感圧ブラシの実装です。
+**fabricjs-eraser** は Fabric.js  v3.x および v4.x 用のシンプルな消しゴムの実装です。
 
-- npm package: https://www.npmjs.com/package/@arch-inc/fabricjs-eraser
+- ~~npm package: https://www.npmjs.com/package/@arch-inc/fabricjs-eraser~~
 - API document: https://arch-inc.github.io/fabricjs-eraser/api/globals.html
 - Demo site: https://arch-inc.github.io/fabricjs-eraser/
 
@@ -16,6 +16,7 @@
 ```html
 <canvas id="main" width="720" height="480"></canvas>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/3.6.2/fabric.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@arch-inc/fabricjs-psbrush@latest/dist/index.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@arch-inc/fabricjs-eraser@latest/dist/index.js"></script>
 <script>
 
@@ -26,9 +27,8 @@
   });
 
   // Initialize a brush
-  let brush = new fabric.PSBrush(canvas);
+  let brush = new fabric.EraserBrush(canvas, { Simplify: psbrush.Simplify });
   brush.width = 10;
-  brush.color = "#000";
   canvas.freeDrawingBrush = brush;
 
 </script>
