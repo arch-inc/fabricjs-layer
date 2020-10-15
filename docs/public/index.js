@@ -1,21 +1,32 @@
 
 function initialize(el) {
   // Create a Fabric.js canvas
-  let canvas = new fabric.Canvas(el, {
+  const canvas = new fabric.Canvas(el, {
     isDrawingMode: true,
     enablePointerEvents: true
   });
 
-  console.log("psbrush", psbrush);
-  console.log("eraser", eraser);
-  
   // Initialize a brush
-  // let brush = new fabric.PSBrush(canvas);
-  // brush.width = 10;
-  // brush.color = "#000";
-  // canvas.freeDrawingBrush = brush;
-  let brush = new fabric.EraserBrush(canvas, { Simplify: psbrush.Simplify });
+  const brush = new fabric.PSBrush(canvas);
   brush.width = 10;
+  brush.color = "#000";
+
+  let eraser = new fabric.EraserBrush(canvas, { Simplify: psbrush.Simplify });
+  eraser.width = 10;
+  eraser.color = "rgba(255,0,0,0.3)";
+
   canvas.freeDrawingBrush = brush;
 
+  const brushButton = document.querySelector("#brush");
+  brushButton.addEventListener("click", () => {
+    canvas.freeDrawingBrush = brush;
+    brushButton.classList.add("primary");
+    eraserButton.classList.remove("primary");
+  });
+  const eraserButton = document.querySelector("#eraser");
+  eraserButton.addEventListener("click", () => {
+    canvas.freeDrawingBrush = eraser;
+    brushButton.classList.remove("primary");
+    eraserButton.classList.add("primary");
+  });
 }

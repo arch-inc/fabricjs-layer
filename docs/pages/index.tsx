@@ -141,6 +141,12 @@ const Index: NextPage = () => {
             </p>
             <div className="ui divider"></div>
           </div>
+          <div className="ui basic segment center aligned">
+            <div className="ui horizontal list">
+            <div className="item"><button id="brush" className="ui primary button"><i className="paint brush icon" />brush</button></div>
+            <div className="item"><button id="eraser" className="ui button"><i className="eraser icon" />eraser</button></div>
+            </div>
+          </div>
           <div className="canvas">{canvas}</div>
         </div>
       </div>
