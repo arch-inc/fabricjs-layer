@@ -14,7 +14,7 @@ export default [
       {
         file: pkg.main,
         format: "umd",
-        name: "psbrush",
+        name: "eraser",
         globals: {
           fabric: "fabric"
         }
