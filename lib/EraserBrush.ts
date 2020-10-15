@@ -25,7 +25,7 @@ export interface EraserBrushIface extends fabric.BaseBrush {
  */
 const EraserBrush: new (
   canvas: fabric.StaticCanvas,
-  options?: fabric.ICanvasOptions & { Simplify: typeof Simplify }
+  options?: { Simplify: typeof Simplify }
 ) => EraserBrushIface = <any>fabricjs.util.createClass(fabricjs.PencilBrush, {
   rasterize: true,
   simplify: null,
@@ -39,8 +39,8 @@ const EraserBrush: new (
    * @param {fabric.Canvas} canvas
    * @return {EraserBrush} Instance of a pencil brush
    */
-  initialize: function (canvas) {
-    this.simplify = new (this.options.Simplify || Simplify)();
+  initialize: function (canvas, options) {
+    this.simplify = new ((options && options.Simplify) || Simplify)();
     this.canvas = canvas;
     this._points = [];
   },
