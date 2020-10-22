@@ -24,8 +24,8 @@ export function getOverlappedObjects(
   allObjects.forEach((obj, i) => {
     // if (obj instanceof fabric.Textbox) return false;
     // if (obj instanceof fabric.IText) return false;
-    left = Math.min(left, obj.get("left"));
-    top = Math.min(top, obj.get("top"));
+    left = Math.min(left, obj.aCoords.tl.x);
+    top = Math.min(top, obj.aCoords.tl.y);
     const intersection = obj.intersectsWithObject(path);
     if (intersection) {
       if (minIntersectionIndex < 0) {
@@ -54,8 +54,8 @@ export function getTopLeft(objects: fabric.Object[]) {
   let left = Number.MAX_VALUE,
     top = Number.MAX_VALUE;
   objects.forEach((obj) => {
-    left = Math.min(left, obj.get("left"));
-    top = Math.min(top, obj.get("top"));
+    left = Math.min(left, obj.aCoords.tl.x);
+    top = Math.min(top, obj.aCoords.tl.y);
   });
   return { left, top };
 }
