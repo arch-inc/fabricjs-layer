@@ -27,7 +27,7 @@ const EraserBrush: new (
   canvas: fabric.StaticCanvas,
   options?: { Simplify: typeof Simplify }
 ) => EraserBrushIface = <any>fabricjs.util.createClass(fabricjs.PencilBrush, {
-  rasterize: true,
+  rasterize: false,
   simplify: null,
   simplifyTolerance: 0,
   simplifyHighestQuality: false,
@@ -121,51 +121,56 @@ const EraserBrush: new (
       { overlapped, all } = getOverlappedObjects(parent, path);
 
     // calculate group position
-    // if (this.scope && overlapped.objects.length !== all.objects.length) {
-    //   const groupRelativeLeft = overlapped.topLeft.left - all.topLeft.left;
-    //   options.left += groupRelativeLeft;
-    //   const groupRelativeTop = overlapped.topLeft.top - all.topLeft.top;
-    //   options.top += groupRelativeTop;
-    // }
+    if (!this.rasterize) {
+      if (overlapped.objects.length !== all.objects.length) {
+        // const groupRelativeLeft = overlapped.topLeft.left - all.topLeft.left;
+        // options.left = groupRelativeLeft;
+        // const groupRelativeTop = overlapped.topLeft.top - all.topLeft.top;
+        // options.top = groupRelativeTop;
+        options.left = overlapped.topLeft.left;
+        options.top = overlapped.topLeft.top;
+      }
+    }
 
+    // found something to erase
     if (overlapped.objects.length > 0) {
       // merge those objects into a group
       const mergedGroup = new fabricjs.Group(overlapped.objects);
       const erasedGroup = new ErasedGroup(mergedGroup, path, options);
 
-      // if (this.rasterize) {
-      //   // convert it into a dataURL, then back to a fabric image
-      //   const newData = erasedGroup.toDataURL({
-      //     withoutTransform: true,
-      //   });
-      //   fabricjs.Image.fromURL(newData, (fabricImage) => {
-      //     fabricImage.set(options);
+      if (this.rasterize) {
+        // convert it into a dataURL, then back to a fabric image
+        const newData = erasedGroup.toDataURL({
+          withoutTransform: true,
+        });
+        fabricjs.Image.fromURL(newData, (fabricImage) => {
+          fabricImage.set(overlapped.topLeft);
 
-      //     // remove the old objects then add the new image
-      //     parent.remove(...overlapped.objects);
-      //     if (parent instanceof fabricjs.Group) {
-      //       parent.addWithUpdate(fabricImage);
-      //     } else {
-      //       parent.add(fabricImage);
-      //     }
-      //   });
-      // } else {
+          // remove the old objects then add the new image
+          parent.remove(...overlapped.objects);
+          if (parent instanceof fabricjs.Group) {
+            parent.addWithUpdate(fabricImage);
+          } else {
+            parent.add(fabricImage);
+          }
+        });
+      } else {
         parent.remove(...overlapped.objects);
-        if (parent instanceof fabricjs.Group) {
-          parent.addWithUpdate(erasedGroup);
-
-          // virtually call newPath.addWithUpdate(mergedGroup)
-          mergedGroup["_calcBounds"]();
-          mergedGroup["_updateObjectsCoords"]();
-          mergedGroup.setCoords();
-          mergedGroup.dirty = true;
-        } else {
-          parent.add(erasedGroup);
-        }
+        // if (parent instanceof fabricjs.Group) {
+        //   parent.addWithUpdate(erasedGroup);
+        //
+        //   // virtually call newPath.addWithUpdate(mergedGroup)
+        //   mergedGroup["_calcBounds"]();
+        //   mergedGroup["_updateObjectsCoords"]();
+        //   mergedGroup.setCoords();
+        //   mergedGroup.dirty = true;
+        // } else {
+        parent.add(erasedGroup);
+        // }
         const objs = parent["_objects"] as fabric.Object[];
         objs.splice(objs.length - 1, 1);
         objs.splice(overlapped.index, 0, erasedGroup);
-      // }
+      }
       this.canvas.fire("erased-group:added", { target: erasedGroup });
       erasedGroup["fire"]("added");
     }
