@@ -23,6 +23,10 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
       - run: npm ci --no-optional
+      - name: Build library
+        run: npm run build
+        env:
+          GITHUB_PAGES: true
       - name: Build pages
         run: npm run build-pages
         env:
