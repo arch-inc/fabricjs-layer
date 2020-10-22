@@ -29,4 +29,9 @@ function initialize(el) {
     brushButton.classList.remove("primary");
     eraserButton.classList.add("primary");
   });
+
+  canvas.on("erased-group:added", ({ target }) => {
+    console.log("added", target);
+    canvas.loadFromJSON(canvas.toObject()); // for debug purpose
+  });
 }
