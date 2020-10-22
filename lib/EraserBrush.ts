@@ -94,24 +94,24 @@ const EraserBrush: new (
     path.stroke = "#000000";
     path.selectable = false;
     path.evented = false;
-    path.absolutePositioned = true;
-    path.setCoords();
+    // path.absolutePositioned = true;
+    // path.setCoords();
 
-    let options: fabric.IObjectOptions = {};
-    if (this.scope) {
-      // save group position before adding eraser stroke
-      options = {
-        left: this.scope.get("left"),
-        top: this.scope.get("top"),
-      };
+    let options: fabric.IObjectOptions;
+    // if (this.scope) {
+    //   // save group position before adding eraser stroke
+    //   options = {
+    //     left: this.scope.aCoords.tl.x,
+    //     top: this.scope.aCoords.tl.y,
+    //   };
 
-      // update path coordinates to have group-relative values
-      // as well as scope boundaries to reflect path boundaries
-      this.scope.addWithUpdate(path);
-      this.scope.remove(path);
-    } else {
-      options = {};
-    }
+    //   // update path coordinates to have group-relative values
+    //   // as well as scope boundaries to reflect path boundaries
+    //   this.scope.addWithUpdate(path);
+    //   this.scope.remove(path);
+    // } else {
+    options = {};
+    // }
     options["startTime"] = this.currentStartTime;
     options["endTime"] = Date.now();
 
@@ -121,35 +121,35 @@ const EraserBrush: new (
       { overlapped, all } = getOverlappedObjects(parent, path);
 
     // calculate group position
-    if (this.scope && overlapped.objects.length !== all.objects.length) {
-      const groupRelativeLeft = overlapped.topLeft.left - all.topLeft.left;
-      options.left += groupRelativeLeft;
-      const groupRelativeTop = overlapped.topLeft.top - all.topLeft.top;
-      options.top += groupRelativeTop;
-    }
+    // if (this.scope && overlapped.objects.length !== all.objects.length) {
+    //   const groupRelativeLeft = overlapped.topLeft.left - all.topLeft.left;
+    //   options.left += groupRelativeLeft;
+    //   const groupRelativeTop = overlapped.topLeft.top - all.topLeft.top;
+    //   options.top += groupRelativeTop;
+    // }
 
     if (overlapped.objects.length > 0) {
       // merge those objects into a group
       const mergedGroup = new fabricjs.Group(overlapped.objects);
       const erasedGroup = new ErasedGroup(mergedGroup, path, options);
 
-      if (this.rasterize) {
-        // convert it into a dataURL, then back to a fabric image
-        const newData = erasedGroup.toDataURL({
-          withoutTransform: true,
-        });
-        fabricjs.Image.fromURL(newData, (fabricImage) => {
-          fabricImage.set(options);
+      // if (this.rasterize) {
+      //   // convert it into a dataURL, then back to a fabric image
+      //   const newData = erasedGroup.toDataURL({
+      //     withoutTransform: true,
+      //   });
+      //   fabricjs.Image.fromURL(newData, (fabricImage) => {
+      //     fabricImage.set(options);
 
-          // remove the old objects then add the new image
-          parent.remove(...overlapped.objects);
-          if (parent instanceof fabricjs.Group) {
-            parent.addWithUpdate(fabricImage);
-          } else {
-            parent.add(fabricImage);
-          }
-        });
-      } else {
+      //     // remove the old objects then add the new image
+      //     parent.remove(...overlapped.objects);
+      //     if (parent instanceof fabricjs.Group) {
+      //       parent.addWithUpdate(fabricImage);
+      //     } else {
+      //       parent.add(fabricImage);
+      //     }
+      //   });
+      // } else {
         parent.remove(...overlapped.objects);
         if (parent instanceof fabricjs.Group) {
           parent.addWithUpdate(erasedGroup);
@@ -165,7 +165,7 @@ const EraserBrush: new (
         const objs = parent["_objects"] as fabric.Object[];
         objs.splice(objs.length - 1, 1);
         objs.splice(overlapped.index, 0, erasedGroup);
-      }
+      // }
       this.canvas.fire("erased-group:added", { target: erasedGroup });
       erasedGroup["fire"]("added");
     }
