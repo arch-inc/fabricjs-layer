@@ -59,3 +59,25 @@ export function getTopLeft(objects: fabric.Object[]) {
   });
   return { left, top };
 }
+
+export function removeErasedGroup(group: ErasedGroupIface) {
+  // destory erased group
+  const { original } = group;
+  const parent = group.group || group.canvas;
+  const index = parent.getObjects().findIndex(o => o === group);
+  group.destroy();
+  parent.remove(group);
+
+  // insert original group
+  parent.insertAt(original, index, false);
+
+  // destroy original group
+  const objects = original.getObjects();
+  original.destroy();
+  parent.remove(original);
+
+  // insert original objects
+  for (let i = 0; i < objects.length; i ++) {
+    parent.insertAt(objects[i], index + i, false);
+  }
+}

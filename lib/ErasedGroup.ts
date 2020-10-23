@@ -1,4 +1,7 @@
 /// <reference types="fabric" />
+
+import { removeErasedGroup } from "./utils";
+
 const fabricjs: typeof fabric =
   typeof fabric === "undefined" ? require("fabric").fabric : fabric;
 
@@ -7,6 +10,7 @@ export interface ErasedGroupIface extends fabric.Group {
   erasedPath: fabric.Path;
   startTime: number;
   endTime: number;
+  ungroup(): void;
   fromObject?: (object: object, callback: Function) => void;
 }
 
@@ -66,6 +70,10 @@ const ErasedGroupImpl = <any>fabricjs.util.createClass(fabricjs.Group, {
       "toObject",
       ["startTime", "endTime"].concat(propertiesToInclude)
     );
+  },
+
+  ungroup: function() {
+    removeErasedGroup(this);
   },
 
   /**
