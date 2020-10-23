@@ -29,9 +29,17 @@ function initialize(el) {
     brushButton.classList.remove("primary");
     eraserButton.classList.add("primary");
   });
+  const undoButton = document.querySelector("#undo");
+  undoButton.addEventListener("click", () => {
+    lastGroup.ungroup();
+    undoButton.disabled = true;
+  });
 
+  let lastGroup;
   canvas.on("erased-group:added", ({ target }) => {
-    console.log("added", target);
-    canvas.loadFromJSON(canvas.toObject()); // for debug purpose
+    // console.log("added", target);
+    // canvas.loadFromJSON(canvas.toObject()); // for debug purpose
+    lastGroup = target;
+    undoButton.disabled = false;
   });
 }
