@@ -51,15 +51,15 @@ import { LayerGroup } from "@arch-inc/fabricjs-layer"
 
 All of the exported classes and interfaces are listed in [TypeDoc](https://arch-inc.github.io/fabricjs-layer/api/globals.html).
 
-For instance, `PSBrush` can be constructed by [`new PSBrush(canvas)`](https://arch-inc.github.io/fabricjs-layer/api/globals.html#layer) and its instance has [various properties](https://arch-inc.github.io/fabricjs-layer/api/interfaces/layeriface.html) including `color`, `opacity`, `width`, `simplifyTolerance`, `pressureCoeff` etc. Use of these properties can be observed in [Griffith Sketch](https://gs.archinc.jp/), a web-based lightweight tool for sketching ideas.
+For instance, `LayerGroup` can be constructed by [`new LayerGroup([])`](https://arch-inc.github.io/fabricjs-layer/api/globals.html#layergroup) and its instance has [various properties](https://arch-inc.github.io/fabricjs-layer/api/interfaces/layergroupiface.html). Use of these properties can be observed in [Griffith Sketch](https://gs.archinc.jp/), a web-based lightweight tool for sketching ideas.
 
-Please note that `PSBrush` and `PSStroke` classes are listed as variables and their fields are defined separately as `PSBrushIface` and `PSStrokeIface`. This is because Fabric.js requires all relevant classes to be defined through its `fabric.util.createClass` helper function.
+Please note that `LayerGroup` is listed as variables and their fields are defined separately as `LayerGroupIface`. This is because Fabric.js requires all relevant classes to be defined through its `fabric.util.createClass` helper function.
 
 このモジュールが export しているすべてのクラスとインタフェースは [TypeDoc](https://arch-inc.github.io/fabricjs-layer/api/globals.html) で閲覧できます。
 
-例えば `PSBrush` クラスは [`new PSBrush(canvas)`](https://arch-inc.github.io/fabricjs-layer/api/globals.html#layer) でインスタンス化でき、 [さまざまなプロパティ](https://arch-inc.github.io/fabricjs-layer/api/interfaces/layeriface.html) （`color`, `opacity`, `width`, `simplifyTolerance`, `pressureCoeff` など）を持っています。これらのプロパティの実際の利用例は、アイデアスケッチ作成用のWebサービス [Griffith Sketch](https://gs.archinc.jp/) で確認できます。
+例えば `LayerGroup` クラスは [`new LayerGroup([])`](https://arch-inc.github.io/fabricjs-layer/api/globals.html#layergroup) のようにインスタンス化でき、 [さまざまなプロパティ](https://arch-inc.github.io/fabricjs-layer/api/interfaces/layergroupiface.html) を持っています。これらのプロパティの実際の利用例は、アイデアスケッチ作成用のWebサービス [Griffith Sketch](https://gs.archinc.jp/) で確認できます。
 
-なお、 `PSBrush` と `PSStroke` は実際にはクラスですが変数 (Variables) としてリストアップされ、メンバー変数は `PSBrushIface` と `PSStrokeIface` という別のインタフェースで定義されています。これは Fabric.js 本体がクラス定義を `fabric.util.createClass` というヘルパー関数で行うように実装されているためです。
+なお、 `PSBrush` と `PSStroke` は実際にはクラスですが変数 (Variables) としてリストアップされ、メンバー変数は `LayerGroupIface` という別のインタフェースで定義されています。これは Fabric.js 本体がクラス定義を `fabric.util.createClass` というヘルパー関数で行うように実装されているためです。
 
 ### Credits / 開発者
 
