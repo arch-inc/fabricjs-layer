@@ -66,15 +66,19 @@
 						<section class="tsd-index-section ">
 							<h3>Interfaces</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-interface"><a href="interfaces/erasedgroupiface.html" class="tsd-kind-icon">Erased<wbr>Group<wbr>Iface</a></li>
-								<li class="tsd-kind-interface"><a href="interfaces/eraserbrushiface.html" class="tsd-kind-icon">Eraser<wbr>Brush<wbr>Iface</a></li>
+								<li class="tsd-kind-interface"><a href="interfaces/layergroupiface.html" class="tsd-kind-icon">Layer<wbr>Group<wbr>Iface</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Variables</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-variable"><a href="globals.html#erasedgroup" class="tsd-kind-icon">Erased<wbr>Group</a></li>
-								<li class="tsd-kind-variable"><a href="globals.html#eraserbrush" class="tsd-kind-icon">Eraser<wbr>Brush</a></li>
+								<li class="tsd-kind-variable"><a href="globals.html#layergroup" class="tsd-kind-icon">Layer<wbr>Group</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Functions</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-function"><a href="globals.html#islayergroup" class="tsd-kind-icon">is<wbr>Layer<wbr>Group</a></li>
 							</ul>
 						</section>
 					</div>
@@ -83,21 +87,18 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Variables</h2>
 				<section class="tsd-panel tsd-member tsd-kind-variable">
-					<a name="erasedgroup" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagConst">Const</span> Erased<wbr>Group</h3>
-					<div class="tsd-signature tsd-kind-icon">Erased<wbr>Group<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>constructor<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">; </span>fromObject<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span>object<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, callback<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> = ErasedGroupImpl</span></div>
+					<a name="layergroup" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> Layer<wbr>Group</h3>
+					<div class="tsd-signature tsd-kind-icon">Layer<wbr>Group<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>constructor<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">; </span>fromObject<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span>object<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, callback<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span>lg<span class="tsd-signature-symbol">: </span><a href="interfaces/layergroupiface.html" class="tsd-signature-type">LayerGroupIface</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> = LayerGroupImpl</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/arch-inc/fabricjs-layer/blob/c27f3c4/lib/ErasedGroup.ts#L104">lib/ErasedGroup.ts:104</a></li>
+							<li>Defined in <a href="https://github.com/arch-inc/fabricjs-layer/blob/62e6fd0/lib/LayerGroup.ts#L69">lib/LayerGroup.ts:69</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p><a href="https://github.com/fabricjs/fabric.js/issues/5595">https://github.com/fabricjs/fabric.js/issues/5595</a></p>
+							<p>LayerGroup class</p>
 						</div>
-						<p>Ported from: <a href="https://codepen.io/anon/pen/byPeNQ">https://codepen.io/anon/pen/byPeNQ</a>
-						Note: Might not work with versions other than 3.1.0</p>
-						<p>Made it so that the bound is calculated on the original only</p>
 					</div>
 					<div class="tsd-type-declaration">
 						<h4>Type declaration</h4>
@@ -105,22 +106,19 @@
 							<li class="tsd-parameter">
 								<h5>constructor<span class="tsd-signature-symbol">: </span>function</h5>
 								<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-type-literal">
-									<li class="tsd-signature tsd-kind-icon">new __type<span class="tsd-signature-symbol">(</span>group<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Group</span>, path<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Path</span>, options<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">object</span>, isAlreadyGrouped<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interfaces/erasedgroupiface.html" class="tsd-signature-type">ErasedGroupIface</a></li>
+									<li class="tsd-signature tsd-kind-icon">new __type<span class="tsd-signature-symbol">(</span>objects<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Object</span><span class="tsd-signature-symbol">[]</span>, options<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">object</span>, isAlreadyGrouped<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interfaces/layergroupiface.html" class="tsd-signature-type">LayerGroupIface</a></li>
 								</ul>
 								<ul class="tsd-descriptions">
 									<li class="tsd-description">
 										<aside class="tsd-sources">
 											<ul>
-												<li>Defined in <a href="https://github.com/arch-inc/fabricjs-layer/blob/c27f3c4/lib/ErasedGroup.ts#L104">lib/ErasedGroup.ts:104</a></li>
+												<li>Defined in <a href="https://github.com/arch-inc/fabricjs-layer/blob/62e6fd0/lib/LayerGroup.ts#L69">lib/LayerGroup.ts:69</a></li>
 											</ul>
 										</aside>
 										<h4 class="tsd-parameters-title">Parameters</h4>
 										<ul class="tsd-parameters">
 											<li>
-												<h5>group: <span class="tsd-signature-type">Group</span></h5>
-											</li>
-											<li>
-												<h5>path: <span class="tsd-signature-type">Path</span></h5>
+												<h5>objects: <span class="tsd-signature-type">Object</span><span class="tsd-signature-symbol">[]</span></h5>
 											</li>
 											<li>
 												<h5><span class="tsd-flag ts-flagOptional">Optional</span> options: <span class="tsd-signature-type">object</span></h5>
@@ -129,16 +127,16 @@
 												<h5><span class="tsd-flag ts-flagOptional">Optional</span> isAlreadyGrouped: <span class="tsd-signature-type">boolean</span></h5>
 											</li>
 										</ul>
-										<h4 class="tsd-returns-title">Returns <a href="interfaces/erasedgroupiface.html" class="tsd-signature-type">ErasedGroupIface</a></h4>
+										<h4 class="tsd-returns-title">Returns <a href="interfaces/layergroupiface.html" class="tsd-signature-type">LayerGroupIface</a></h4>
 									</li>
 								</ul>
 							</li>
 							<li class="tsd-parameter">
-								<h5>from<wbr>Object<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span>object<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, callback<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></h5>
+								<h5>from<wbr>Object<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span>object<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, callback<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span>lg<span class="tsd-signature-symbol">: </span><a href="interfaces/layergroupiface.html" class="tsd-signature-type">LayerGroupIface</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></h5>
 								<ul class="tsd-parameters">
 									<li class="tsd-parameter-signature">
 										<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-variable">
-											<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>object<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, callback<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Function</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+											<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>object<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, callback<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span>lg<span class="tsd-signature-symbol">: </span><a href="interfaces/layergroupiface.html" class="tsd-signature-type">LayerGroupIface</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 										</ul>
 										<ul class="tsd-descriptions">
 											<li class="tsd-description">
@@ -148,7 +146,25 @@
 														<h5>object: <span class="tsd-signature-type">any</span></h5>
 													</li>
 													<li>
-														<h5>callback: <span class="tsd-signature-type">Function</span></h5>
+														<h5>callback: <span class="tsd-signature-symbol">(</span>lg<span class="tsd-signature-symbol">: </span><a href="interfaces/layergroupiface.html" class="tsd-signature-type">LayerGroupIface</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></h5>
+														<ul class="tsd-parameters">
+															<li class="tsd-parameter-signature">
+																<ul class="tsd-signatures tsd-kind-type-literal">
+																	<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>lg<span class="tsd-signature-symbol">: </span><a href="interfaces/layergroupiface.html" class="tsd-signature-type">LayerGroupIface</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+																</ul>
+																<ul class="tsd-descriptions">
+																	<li class="tsd-description">
+																		<h4 class="tsd-parameters-title">Parameters</h4>
+																		<ul class="tsd-parameters">
+																			<li>
+																				<h5>lg: <a href="interfaces/layergroupiface.html" class="tsd-signature-type">LayerGroupIface</a></h5>
+																			</li>
+																		</ul>
+																		<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+																	</li>
+																</ul>
+															</li>
+														</ul>
 													</li>
 												</ul>
 												<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
@@ -160,29 +176,31 @@
 						</ul>
 					</div>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-variable">
-					<a name="eraserbrush" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagConst">Const</span> Eraser<wbr>Brush</h3>
-					<div class="tsd-signature tsd-kind-icon">Eraser<wbr>Brush<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{}</span><span class="tsd-signature-symbol"> = &lt;any&gt;fabricjs.util.createClass(fabricjs.PencilBrush, {rasterize: false,simplify: null,simplifyTolerance: 0,simplifyHighestQuality: false,scope: null,currentStartTime: null,/*** Constructor* @param {fabric.Canvas} canvas* @return {EraserBrush} Instance of a pencil brush*/initialize: function (canvas, options) {this.simplify &#x3D; new ((options &amp;&amp; options.Simplify) || Simplify)();this.canvas &#x3D; canvas;this._points &#x3D; [];},/*** @private* @param {Object} pointer Actual mouse position related to the canvas.*/_prepareForDrawing: function (pointer) {this.callSuper(&quot;_prepareForDrawing&quot;, pointer);this.currentStartTime &#x3D; Date.now();},/*** On mouseup after drawing the path on contextTop canvas* we use the points captured to create an new fabric path object* and add it to the fabric canvas.*/_finalizeAndAddPath: function () {// --- shared process with PencilBrush starts here ---var ctx &#x3D; this.canvas.contextTop;ctx.closePath();// simplify the pathif (this.simplifyTolerance &gt; 0) {this.simplify.tolerance &#x3D; this.simplifyTolerance;this._points &#x3D; (&lt;Simplify&lt;fabric.Point&gt;&gt;this.simplify).do(this._points,this.simplifyHighestQuality);}if (this.decimate) {this._points &#x3D; this.decimatePoints(this._points, this.decimate);}var pathData &#x3D; this.convertPointsToSVGPath(this._points).join(&quot;&quot;);if (pathData &#x3D;&#x3D;&#x3D; &quot;M 0 0 Q 0 0 0 0 L 0 0&quot;) {// do not create 0 width/height paths, as they are// rendered inconsistently across browsers// Firefox 4, for example, renders a dot,// whereas Chrome 10 renders nothingthis.canvas.requestRenderAll();return;}// use globalCompositeOperation to &#x27;fake&#x27; eraserconst path: fabric.Path &#x3D; this.createPath(pathData);// --- shared process with PencilBrush ends here ---path.globalCompositeOperation &#x3D; &quot;destination-out&quot;;path.stroke &#x3D; &quot;#000000&quot;;path.selectable &#x3D; false;path.evented &#x3D; false;// path.absolutePositioned &#x3D; true;// path.setCoords();let options: fabric.IObjectOptions;// if (this.scope) {//   // save group position before adding eraser stroke//   options &#x3D; {//     left: this.scope.aCoords.tl.x,//     top: this.scope.aCoords.tl.y,//   };//   // update path coordinates to have group-relative values//   // as well as scope boundaries to reflect path boundaries//   this.scope.addWithUpdate(path);//   this.scope.remove(path);// } else {options &#x3D; {};// }options[&quot;startTime&quot;] &#x3D; this.currentStartTime;options[&quot;endTime&quot;] &#x3D; Date.now();// grab all the objects that intersects with the path// and get group-relative position of top-left corner of the filtered objectsconst parent: fabric.Group | fabric.Canvas &#x3D; this.scope || this.canvas,{ overlapped, all } &#x3D; getOverlappedObjects(parent, path);// calculate group positionif (!this.rasterize) {if (overlapped.objects.length !&#x3D;&#x3D; all.objects.length) {// const groupRelativeLeft &#x3D; overlapped.topLeft.left - all.topLeft.left;// options.left &#x3D; groupRelativeLeft;// const groupRelativeTop &#x3D; overlapped.topLeft.top - all.topLeft.top;// options.top &#x3D; groupRelativeTop;options.left &#x3D; overlapped.topLeft.left;options.top &#x3D; overlapped.topLeft.top;}}// found something to eraseif (overlapped.objects.length &gt; 0) {// merge those objects into a groupconst mergedGroup &#x3D; new fabricjs.Group(overlapped.objects);const erasedGroup &#x3D; new ErasedGroup(mergedGroup, path, options);if (this.rasterize) {// convert it into a dataURL, then back to a fabric imageconst newData &#x3D; erasedGroup.toDataURL({withoutTransform: true,});fabricjs.Image.fromURL(newData, (fabricImage) &#x3D;&gt; {fabricImage.set(overlapped.topLeft);// remove the old objects then add the new imageparent.remove(...overlapped.objects);if (parent instanceof fabricjs.Group) {parent.addWithUpdate(fabricImage);} else {parent.add(fabricImage);}});} else {parent.remove(...overlapped.objects);// if (parent instanceof fabricjs.Group) {//   parent.addWithUpdate(erasedGroup);////   // virtually call newPath.addWithUpdate(mergedGroup)//   mergedGroup[&quot;_calcBounds&quot;]();//   mergedGroup[&quot;_updateObjectsCoords&quot;]();//   mergedGroup.setCoords();//   mergedGroup.dirty &#x3D; true;// } else {parent.add(erasedGroup);// }const objs &#x3D; parent[&quot;_objects&quot;] as fabric.Object[];objs.splice(objs.length - 1, 1);objs.splice(overlapped.index, 0, erasedGroup);}this.canvas.fire(&quot;erased-group:added&quot;, { target: erasedGroup });erasedGroup[&quot;fire&quot;](&quot;added&quot;);}// --- shared process with PencilBrush starts here ---this.canvas.renderAll();this.canvas.clearContext(this.canvas.contextTop);this._resetShadow();// --- shared process with PencilBrush ends here ---},})</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/arch-inc/fabricjs-layer/blob/c27f3c4/lib/EraserBrush.ts#L26">lib/EraserBrush.ts:26</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p><a href="https://github.com/fabricjs/fabric.js/issues/5595">https://github.com/fabricjs/fabric.js/issues/5595</a></p>
-						</div>
-						<p>Ported from: <a href="https://codepen.io/anon/pen/byPeNQ">https://codepen.io/anon/pen/byPeNQ</a>
-						Note: Might not work with versions other than 3.1.0</p>
-						<p>Made it so that the path will be &#39;merged&#39; with other objects
-						into a customized group and has a &#39;destination-out&#39; composition</p>
-					</div>
-					<div class="tsd-type-declaration">
-						<h4>Type declaration</h4>
-						<ul class="tsd-parameters">
-						</ul>
-					</div>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Functions</h2>
+				<section class="tsd-panel tsd-member tsd-kind-function">
+					<a name="islayergroup" class="tsd-anchor"></a>
+					<h3>is<wbr>Layer<wbr>Group</h3>
+					<ul class="tsd-signatures tsd-kind-function">
+						<li class="tsd-signature tsd-kind-icon">is<wbr>Layer<wbr>Group<span class="tsd-signature-symbol">(</span>object<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Object</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">ICollection</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol"> is </span><span class="tsd-signature-type">LayerGroupIface</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/arch-inc/fabricjs-layer/blob/62e6fd0/lib/utils.ts#L4">lib/utils.ts:4</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>object: <span class="tsd-signature-type">Object</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">ICollection</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">&gt;</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">object</span><span class="tsd-signature-symbol"> is </span><span class="tsd-signature-type">LayerGroupIface</span></h4>
+						</li>
+					</ul>
 				</section>
 			</section>
 		</div>
@@ -197,16 +215,13 @@
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/erasedgroupiface.html" class="tsd-kind-icon">Erased<wbr>Group<wbr>Iface</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/eraserbrushiface.html" class="tsd-kind-icon">Eraser<wbr>Brush<wbr>Iface</a>
+						<a href="interfaces/layergroupiface.html" class="tsd-kind-icon">Layer<wbr>Group<wbr>Iface</a>
 					</li>
 					<li class=" tsd-kind-variable">
-						<a href="globals.html#erasedgroup" class="tsd-kind-icon">Erased<wbr>Group</a>
+						<a href="globals.html#layergroup" class="tsd-kind-icon">Layer<wbr>Group</a>
 					</li>
-					<li class=" tsd-kind-variable">
-						<a href="globals.html#eraserbrush" class="tsd-kind-icon">Eraser<wbr>Brush</a>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#islayergroup" class="tsd-kind-icon">is<wbr>Layer<wbr>Group</a>
 					</li>
 				</ul>
 			</nav>

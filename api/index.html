@@ -63,10 +63,10 @@
 				<a href="#fabricjs-layer" id="fabricjs-layer" style="color: inherit; text-decoration: none;">
 					<h3>fabricjs-layer</h3>
 				</a>
-				<p><a href="https://github.com/arch-inc/fabricjs-layer/actions?query=workflow%3Anpm-publish"><img src="https://github.com/arch-inc/fabricjs-layer/workflows/npm-publish/badge.svg" alt="build"></a>
+				<p><a href="https://github.com/arch-inc/fabricjs-layer/actions?query=workflow%3Anpm-publish-gpr"><img src="https://github.com/arch-inc/fabricjs-layer/workflows/npm-publish-gpr/badge.svg" alt="build"></a>
 				<a href="https://www.npmjs.com/package/@arch-inc/fabricjs-layer"><img src="https://img.shields.io/npm/v/@arch-inc/fabricjs-layer" alt="npm version"></a></p>
 				<p><strong>fabricjs-layer</strong> is a simple layer implementation for Fabric.js v3.x and v4.x.</p>
-				<p><strong>fabricjs-layer</strong> は Fabric.js  v3.x および v4.x 用のシンプルな消しゴムの実装です。</p>
+				<p><strong>fabricjs-layer</strong> は Fabric.js  v3.x および v4.x 用のシンプルなレイヤー実装です。</p>
 				<ul>
 					<li><del>npm package: <a href="https://www.npmjs.com/package/@arch-inc/fabricjs-layer">https://www.npmjs.com/package/@arch-inc/fabricjs-layer</a></del></li>
 					<li>API document: <a href="https://arch-inc.github.io/fabricjs-layer/api/globals.html">https://arch-inc.github.io/fabricjs-layer/api/globals.html</a></li>
@@ -77,7 +77,6 @@
 				</a>
 				<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">canvas</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"main"</span> <span class="hljs-attr">width</span>=<span class="hljs-string">"720"</span> <span class="hljs-attr">height</span>=<span class="hljs-string">"480"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">canvas</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://cdnjs.cloudflare.com/ajax/libs/fabric.js/3.6.2/fabric.min.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://cdn.jsdelivr.net/npm/@arch-inc/fabricjs-psbrush@latest/dist/index.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://cdn.jsdelivr.net/npm/@arch-inc/fabricjs-layer@latest/dist/index.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
 
@@ -87,17 +86,17 @@
     <span class="hljs-attr">enablePointerEvents</span>: <span class="hljs-literal">true</span>
   });
 
-  <span class="hljs-comment">// Initialize a brush</span>
-  <span class="hljs-keyword">let</span> brush = <span class="hljs-keyword">new</span> fabric.EraserBrush(canvas, { <span class="hljs-attr">Simplify</span>: psbrush.Simplify });
-  brush.width = <span class="hljs-number">10</span>;
-  canvas.freeDrawingBrush = brush;
+  <span class="hljs-comment">// Add layers</span>
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i ++; i &lt; <span class="hljs-number">5</span>) {
+    canvas.add(<span class="hljs-keyword">new</span> fabric.LayerGroup([]));
+  }
 
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
 				<p>If you use <code>Webpack</code> or other similar solutions, simply install the npm package and start using it.</p>
-				<p>TypeScript definitions are available by default. (e.g., <a href="https://cdn.jsdelivr.net/npm/@arch-inc/fabricjs-layer@latest/dist/PSBrush.d.ts">PSBrush.d.ts</a>)</p>
+				<p>TypeScript definitions are available by default. (e.g., <a href="https://cdn.jsdelivr.net/npm/@arch-inc/fabricjs-layer@latest/dist/LayerGroup.d.ts">LayerGroup.d.ts</a>)</p>
 				<p><code>Webpack</code> 等を使っている場合は <code>npm install</code> でインストールできます。TypeScriptの型定義がついてきます。</p>
 				<pre><code class="language-sh">npm i @arch-inc/fabricjs-layer</code></pre>
-				<pre><code class="language-javascript"><span class="hljs-keyword">import</span> { PSBrush } <span class="hljs-keyword">from</span> <span class="hljs-string">"@arch-inc/fabricjs-layer"</span></code></pre>
+				<pre><code class="language-javascript"><span class="hljs-keyword">import</span> { LayerGroup } <span class="hljs-keyword">from</span> <span class="hljs-string">"@arch-inc/fabricjs-layer"</span></code></pre>
 				<a href="#api-documentation--apiドキュメント" id="api-documentation--apiドキュメント" style="color: inherit; text-decoration: none;">
 					<h3>API Documentation / APIドキュメント</h3>
 				</a>
@@ -111,15 +110,9 @@
 					<h3>Credits / 開発者</h3>
 				</a>
 				<ul>
-					<li><a href="https://junkato.jp">Jun Kato</a>, core algorithm developer</li>
-					<li><a href="https://twitter.com/mactkg">Kenta Hara</a>, developer</li>
+					<li><a href="https://junkato.jp">Jun Kato</a>, developer</li>
 					<li><a href="https://github.com/fabricjs/fabric.js/graphs/contributors">And all the other GitHub contributors in the original Fabric.js implementation</a></li>
 				</ul>
-				<a href="#dependencies--依存パッケージ" id="dependencies--依存パッケージ" style="color: inherit; text-decoration: none;">
-					<h3>Dependencies / 依存パッケージ</h3>
-				</a>
-				<p>Except for the dependency for Fabric.js, this library contains a TypeScript port of <a href="https://mourner.github.io/simplify-js/">Simplify.js</a>, a high-performance JS polyline simplification library.</p>
-				<p>Fabric.js の他にパス単純化のためのライブラリ <a href="https://mourner.github.io/simplify-js/">Simplify.js</a> をTypeScriptで書き直して利用しています。</p>
 				<a href="#staying-in-touch--開発者に連絡" id="staying-in-touch--開発者に連絡" style="color: inherit; text-decoration: none;">
 					<h3>Staying in touch / 開発者に連絡</h3>
 				</a>
@@ -137,7 +130,7 @@
 					<li><a href="https://gs.archinc.jp/">Griffith Sketch</a>: a web-based lightweight tool for sketching ideas.</li>
 				</ul>
 				<hr>
-				<p>Copyright (c) 2020 Arch Inc. (Jun Kato, Kenta Hara)</p>
+				<p>Copyright (c) 2020 Arch Inc. (Jun Kato)</p>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -151,16 +144,13 @@
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-interface">
-						<a href="interfaces/erasedgroupiface.html" class="tsd-kind-icon">Erased<wbr>Group<wbr>Iface</a>
-					</li>
-					<li class=" tsd-kind-interface">
-						<a href="interfaces/eraserbrushiface.html" class="tsd-kind-icon">Eraser<wbr>Brush<wbr>Iface</a>
+						<a href="interfaces/layergroupiface.html" class="tsd-kind-icon">Layer<wbr>Group<wbr>Iface</a>
 					</li>
 					<li class=" tsd-kind-variable">
-						<a href="globals.html#erasedgroup" class="tsd-kind-icon">Erased<wbr>Group</a>
+						<a href="globals.html#layergroup" class="tsd-kind-icon">Layer<wbr>Group</a>
 					</li>
-					<li class=" tsd-kind-variable">
-						<a href="globals.html#eraserbrush" class="tsd-kind-icon">Eraser<wbr>Brush</a>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#islayergroup" class="tsd-kind-icon">is<wbr>Layer<wbr>Group</a>
 					</li>
 				</ul>
 			</nav>
