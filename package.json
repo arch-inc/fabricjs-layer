@@ -1,6 +1,6 @@
 {
   "name": "@arch-inc/fabricjs-layer",
-  "version": "0.0.15",
+  "version": "0.0.0",
   "description": "A simple layer implementation for Fabric.js",
   "main": "dist/index.js",
   "browser": "dist/index.js",
@@ -38,7 +38,6 @@
   },
   "homepage": "https://github.com/arch-inc/fabricjs-layer#readme",
   "dependencies": {
-    "@arch-inc/fabricjs-psbrush": "0.0.15",
     "fabric": "^4.0.0-beta.7"
   },
   "devDependencies": {
@@ -46,11 +45,11 @@
     "@types/react": "^16.9.23",
     "del-cli": "^3.0.0",
     "ncp": "^2.0.0",
-    "next": "^9.2.2",
+    "next": "^9.5.5",
     "prettier": "^1.19.1",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
-    "rollup": "^2.0.0",
+    "rollup": "^2.32.1",
     "rollup-plugin-terser": "^5.2.0",
     "rollup-plugin-typescript2": "^0.26.0",
     "typedoc": "^0.17.0-3",

@@ -1,11 +1,11 @@
 ### fabricjs-layer
 
-[![build](https://github.com/arch-inc/fabricjs-layer/workflows/npm-publish/badge.svg)](https://github.com/arch-inc/fabricjs-layer/actions?query=workflow%3Anpm-publish)
+[![build](https://github.com/arch-inc/fabricjs-layer/workflows/npm-publish-gpr/badge.svg)](https://github.com/arch-inc/fabricjs-layer/actions?query=workflow%3Anpm-publish-gpr)
 [![npm version](https://img.shields.io/npm/v/@arch-inc/fabricjs-layer)](https://www.npmjs.com/package/@arch-inc/fabricjs-layer)
 
 **fabricjs-layer** is a simple layer implementation for Fabric.js v3.x and v4.x.
 
-**fabricjs-layer** は Fabric.js  v3.x および v4.x 用のシンプルな消しゴムの実装です。
+**fabricjs-layer** は Fabric.js  v3.x および v4.x 用のシンプルなレイヤー実装です。
 
 - ~~npm package: https://www.npmjs.com/package/@arch-inc/fabricjs-layer~~
 - API document: https://arch-inc.github.io/fabricjs-layer/api/globals.html
@@ -16,7 +16,6 @@
 ```html
 <canvas id="main" width="720" height="480"></canvas>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/3.6.2/fabric.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@arch-inc/fabricjs-psbrush@latest/dist/index.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@arch-inc/fabricjs-layer@latest/dist/index.js"></script>
 <script>
 
@@ -26,17 +25,17 @@
     enablePointerEvents: true
   });
 
-  // Initialize a brush
-  let brush = new fabric.EraserBrush(canvas, { Simplify: psbrush.Simplify });
-  brush.width = 10;
-  canvas.freeDrawingBrush = brush;
+  // Add layers
+  for (let i = 0; i ++; i < 5) {
+    canvas.add(new fabric.LayerGroup([]));
+  }
 
 </script>
 ```
 
 If you use `Webpack` or other similar solutions, simply install the npm package and start using it.
 
-TypeScript definitions are available by default. (e.g., [PSBrush.d.ts](https://cdn.jsdelivr.net/npm/@arch-inc/fabricjs-layer@latest/dist/PSBrush.d.ts))
+TypeScript definitions are available by default. (e.g., [LayerGroup.d.ts](https://cdn.jsdelivr.net/npm/@arch-inc/fabricjs-layer@latest/dist/LayerGroup.d.ts))
 
 `Webpack` 等を使っている場合は `npm install` でインストールできます。TypeScriptの型定義がついてきます。
 
@@ -45,7 +44,7 @@ npm i @arch-inc/fabricjs-layer
 ```
 
 ```javascript
-import { PSBrush } from "@arch-inc/fabricjs-layer"
+import { LayerGroup } from "@arch-inc/fabricjs-layer"
 ```
 
 ### API Documentation / APIドキュメント
@@ -64,15 +63,8 @@ Please note that `PSBrush` and `PSStroke` classes are listed as variables and th
 
 ### Credits / 開発者
 
-- [Jun Kato](https://junkato.jp), core algorithm developer
-- [Kenta Hara](https://twitter.com/mactkg), developer
+- [Jun Kato](https://junkato.jp), developer
 - [And all the other GitHub contributors in the original Fabric.js implementation](https://github.com/fabricjs/fabric.js/graphs/contributors)
-
-### Dependencies / 依存パッケージ
-
-Except for the dependency for Fabric.js, this library contains a TypeScript port of [Simplify.js](https://mourner.github.io/simplify-js/), a high-performance JS polyline simplification library.
-
-Fabric.js の他にパス単純化のためのライブラリ [Simplify.js](https://mourner.github.io/simplify-js/) をTypeScriptで書き直して利用しています。
 
 ### Staying in touch / 開発者に連絡
 
@@ -89,4 +81,4 @@ Twitter [@ArchResearchJp](https://twitter.com/ArchResearchJp) で連絡がつき
 - [Griffith Sketch](https://gs.archinc.jp/): a web-based lightweight tool for sketching ideas.
 
 ---
-Copyright (c) 2020 Arch Inc. (Jun Kato, Kenta Hara)
+Copyright (c) 2020 Arch Inc. (Jun Kato)
