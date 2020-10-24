@@ -1,8 +1,7 @@
 name: npm-publish
 on:
-  push:
-    tags:
-      - 'v*'
+  release:
+    types: [published]
 jobs:
   npm-publish:
     name: npm-publish
