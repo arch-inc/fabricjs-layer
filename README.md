@@ -68,12 +68,8 @@ Please note that `LayerGroup` is listed as variables and their fields are define
 
 ### Staying in touch / 開発者に連絡
 
-We have developed this extension in collaboration with the core developers of Fabric.js and relevant information can be found in their issue tracker.
-
-Twitter [@ArchResearchJp](https://twitter.com/ArchResearchJp) で連絡がつきます。 Fabric.js 本家の issue でも活動しています。
-
-- [Pressure support for styluses? #4885
-](https://github.com/fabricjs/fabric.js/issues/4885)
+- Twitter: [@ArchResearchJp](https://twitter.com/ArchResearchJp)
+- Website: https://research.archinc.jp/en (日本語: https://research.archinc.jp)
 
 ### Library in action / 利用例
 
