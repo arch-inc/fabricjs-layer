@@ -5,20 +5,13 @@ import Head from "next/head";
 const basePath = process.env.BASE_PATH.replace(/\/$/, "");
 
 const Index: NextPage = () => {
-  // create a canvas element that never gets reloaded
-  const ref = useRef<HTMLCanvasElement>();
-  const canvas = useMemo(
-    () => <canvas ref={ref} width="720" height="480" />,
-    []
-  );
-
   // call window.initialize defined in index.js
   useEffect(() => {
-    if (!ref.current || typeof window === "undefined") {
+    if (typeof window === "undefined") {
       return;
     }
-    window["initialize"](ref.current);
-  }, [ref.current]);
+    window["initialize"](null);
+  }, []);
 
   return (
     <>
@@ -88,11 +81,11 @@ const Index: NextPage = () => {
           <div className="ui selection divided list">
             <a
               className="item"
-              href="https://www.npmjs.com/package/@arch-inc/fabricjs-layer"
+              href="https://github.com/arch-inc/fabricjs-layer/packages/"
             >
               <i className="npm icon"></i>
               <div className="content">
-                <div className="header">NPM package registry</div>
+                <div className="header">GitHub package registry</div>
                 <div className="description">@arch-inc/fabricjs-layer</div>
               </div>
             </a>
@@ -136,19 +129,10 @@ const Index: NextPage = () => {
           <div className="ui container">
             <h3 className="ui header">Live demo</h3>
             <p>
-              Draw anything on the white blank canvas shown below; tested on
-              iPad Pro and Surface Go.
+              No demo available at this moment.
             </p>
             <div className="ui divider"></div>
           </div>
-          <div className="ui basic segment center aligned">
-            <div className="ui horizontal list">
-              <div className="item"><button id="brush" className="ui primary button"><i className="paint brush icon" />brush</button></div>
-              <div className="item"><button id="eraser" className="ui button"><i className="eraser icon" />eraser</button></div>
-              <div className="item"><button id="undo" className="ui button" disabled={true}><i className="undo icon" />undo last erase</button></div>
-            </div>
-          </div>
-          <div className="canvas">{canvas}</div>
         </div>
       </div>
       <footer>
@@ -166,7 +150,6 @@ const Index: NextPage = () => {
         </div>
       </footer>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/3.6.2/fabric.min.js"></script>
-      <script src="https://cdn.jsdelivr.net/npm/@arch-inc/fabricjs-psbrush@0.0.15/dist/index.js"></script>
       <script src={`${basePath}/lib.js`}></script>
       <script src={`${basePath}/index.js`}></script>
     </>
