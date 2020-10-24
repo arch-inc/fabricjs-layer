@@ -14,7 +14,7 @@ export default [
       {
         file: pkg.main,
         format: "umd",
-        name: "eraser",
+        name: "layer",
         globals: {
           fabric: "fabric",
           "@arch-inc/fabricjs-psbrush": "psbrush"

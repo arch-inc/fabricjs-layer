@@ -1,4 +1,4 @@
-const basePath = process.env.GITHUB_PAGES ? "/fabricjs-eraser" : "";
+const basePath = process.env.GITHUB_PAGES ? "/fabricjs-layer" : "";
 module.exports = {
   experimental: {
     basePath

@@ -1,7 +1,7 @@
 {
-  "name": "@arch-inc/fabricjs-eraser",
+  "name": "@arch-inc/fabricjs-layer",
   "version": "0.0.15",
-  "description": "A simple eraser implementation for Fabric.js",
+  "description": "A simple layer implementation for Fabric.js",
   "main": "dist/index.js",
   "browser": "dist/index.js",
   "module": "dist/index.es.js",
@@ -21,7 +21,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/arch-inc/fabricjs-eraser.git"
+    "url": "git+https://github.com/arch-inc/fabricjs-layer.git"
   },
   "keywords": [
     "canvas",
@@ -34,9 +34,9 @@
   "author": "Jun Kato <i@junkato.jp>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/arch-inc/fabricjs-eraser/issues"
+    "url": "https://github.com/arch-inc/fabricjs-layer/issues"
   },
-  "homepage": "https://github.com/arch-inc/fabricjs-eraser#readme",
+  "homepage": "https://github.com/arch-inc/fabricjs-layer#readme",
   "dependencies": {
     "@arch-inc/fabricjs-psbrush": "0.0.15",
     "fabric": "^4.0.0-beta.7"
