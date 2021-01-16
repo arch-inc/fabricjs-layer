@@ -41,6 +41,7 @@
     "fabric": "^4.0.0-beta.7"
   },
   "devDependencies": {
+    "@arch-inc/fabricjs-psbrush": "0.0.15",
     "@types/fabric": "^3.6.2",
     "@types/react": "^16.9.23",
     "del-cli": "^3.0.0",
