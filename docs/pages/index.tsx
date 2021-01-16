@@ -150,6 +150,7 @@ const Index: NextPage = () => {
         </div>
       </footer>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/3.6.2/fabric.min.js"></script>
+      <script src="https://unpkg.com/@arch-inc/fabricjs-psbrush@0.0.15/dist/index.js"></script>
       <script src={`${basePath}/lib.js`}></script>
       <script src={`${basePath}/index.js`}></script>
     </>
