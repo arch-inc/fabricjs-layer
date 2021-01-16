@@ -1,8 +1,7 @@
-import { fabric } from "fabric";
-import { LayerGroupIface } from "./LayerGroup";
+import { LayerIface } from "./Layer";
 
 export function isLayerGroup(
-  object: fabric.Object | fabric.ICollection<any>
-): object is LayerGroupIface {
-  return object && object["type"] === "LayerGroup";
+  object: any
+): object is LayerIface {
+  return object && object["type"] === "Layer";
 }

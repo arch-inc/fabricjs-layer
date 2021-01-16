@@ -1,3 +1,3 @@
-import LayerGroup, { LayerGroupIface } from "./LayerGroup";
+import LayerGroup, { LayerGroupIface } from "./Layer";
 export * from "./utils";
 export { LayerGroup, LayerGroupIface };
