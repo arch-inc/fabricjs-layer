@@ -1,19 +1,10 @@
-import { useMemo, useRef, useEffect } from "react";
 import { NextPage } from "next";
 import Head from "next/head";
+import { FabricCanvas } from "../components/FabricCanvas";
 
 const basePath = process.env.BASE_PATH.replace(/\/$/, "");
 
-const Index: NextPage = () => {
-  // call window.initialize defined in index.js
-  useEffect(() => {
-    if (typeof window === "undefined") {
-      return;
-    }
-    window["initialize"](null);
-  }, []);
-
-  return (
+const Index: NextPage = () => (
     <>
       <Head>
         <title key="title">
@@ -129,10 +120,11 @@ const Index: NextPage = () => {
           <div className="ui container">
             <h3 className="ui header">Live demo</h3>
             <p>
-              No demo available at this moment.
+              A simple drawing app.
             </p>
             <div className="ui divider"></div>
           </div>
+          <div className="canvas"><FabricCanvas /></div>
         </div>
       </div>
       <footer>
@@ -149,12 +141,12 @@ const Index: NextPage = () => {
           </div>
         </div>
       </footer>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/3.6.2/fabric.min.js"></script>
-      <script src="https://unpkg.com/@arch-inc/fabricjs-psbrush@0.0.15/dist/index.js"></script>
-      <script src={`${basePath}/lib.js`}></script>
-      <script src={`${basePath}/index.js`}></script>
+      {/* <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/3.6.2/fabric.min.js"></script> */}
+      {/* <script src="https://unpkg.com/@arch-inc/fabricjs-psbrush@0.0.15/dist/index.js"></script> */}
+      {/* <script src={`${basePath}/lib.js`}></script> */}
+      {/* <script src={`${basePath}/index.js`}></script> */}
     </>
   );
-};
+;
 
 export default Index;
