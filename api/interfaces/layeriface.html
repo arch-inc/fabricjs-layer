@@ -84,7 +84,16 @@
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="layeriface.html#createdtime" class="tsd-kind-icon">created<wbr>Time</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="layeriface.html#endindex" class="tsd-kind-icon">end<wbr>Index</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="layeriface.html#startindex" class="tsd-kind-icon">start<wbr>Index</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="layeriface.html#type" class="tsd-kind-icon">type</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Methods</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="layeriface.html#addlistener" class="tsd-kind-icon">add<wbr>Listener</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="layeriface.html#removelistener" class="tsd-kind-icon">remove<wbr>Listener</a></li>
 							</ul>
 						</section>
 					</div>
@@ -98,7 +107,27 @@
 					<div class="tsd-signature tsd-kind-icon">created<wbr>Time<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/arch-inc/fabricjs-layer/blob/272c281/lib/Layer.ts#L12">Layer.ts:12</a></li>
+							<li>Defined in <a href="https://github.com/arch-inc/fabricjs-layer/blob/be32610/lib/Layer.ts#L16">Layer.ts:16</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="endindex" class="tsd-anchor"></a>
+					<h3>end<wbr>Index</h3>
+					<div class="tsd-signature tsd-kind-icon">end<wbr>Index<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/arch-inc/fabricjs-layer/blob/be32610/lib/Layer.ts#L18">Layer.ts:18</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="startindex" class="tsd-anchor"></a>
+					<h3>start<wbr>Index</h3>
+					<div class="tsd-signature tsd-kind-icon">start<wbr>Index<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/arch-inc/fabricjs-layer/blob/be32610/lib/Layer.ts#L17">Layer.ts:17</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -108,9 +137,58 @@
 					<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"Layer"</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/arch-inc/fabricjs-layer/blob/272c281/lib/Layer.ts#L11">Layer.ts:11</a></li>
+							<li>Defined in <a href="https://github.com/arch-inc/fabricjs-layer/blob/be32610/lib/Layer.ts#L15">Layer.ts:15</a></li>
 						</ul>
 					</aside>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
+					<a name="addlistener" class="tsd-anchor"></a>
+					<h3>add<wbr>Listener</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
+						<li class="tsd-signature tsd-kind-icon">add<wbr>Listener<span class="tsd-signature-symbol">(</span>listener<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">LayerEventListener</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/arch-inc/fabricjs-layer/blob/be32610/lib/Layer.ts#L19">Layer.ts:19</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>listener: <span class="tsd-signature-type">LayerEventListener</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
+					<a name="removelistener" class="tsd-anchor"></a>
+					<h3>remove<wbr>Listener</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
+						<li class="tsd-signature tsd-kind-icon">remove<wbr>Listener<span class="tsd-signature-symbol">(</span>listener<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">LayerEventListener</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/arch-inc/fabricjs-layer/blob/be32610/lib/Layer.ts#L20">Layer.ts:20</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>listener: <span class="tsd-signature-type">LayerEventListener</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
+						</li>
+					</ul>
 				</section>
 			</section>
 		</div>
@@ -139,12 +217,27 @@
 								<a href="layeriface.html#createdtime" class="tsd-kind-icon">created<wbr>Time</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="layeriface.html#endindex" class="tsd-kind-icon">end<wbr>Index</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="layeriface.html#startindex" class="tsd-kind-icon">start<wbr>Index</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="layeriface.html#type" class="tsd-kind-icon">type</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface">
+								<a href="layeriface.html#addlistener" class="tsd-kind-icon">add<wbr>Listener</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-interface">
+								<a href="layeriface.html#removelistener" class="tsd-kind-icon">remove<wbr>Listener</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
+					<li class=" tsd-kind-function tsd-has-type-parameter">
+						<a href="../globals.html#getindexof" class="tsd-kind-icon">get<wbr>Index<wbr>Of</a>
+					</li>
 					<li class=" tsd-kind-function">
 						<a href="../globals.html#islayergroup" class="tsd-kind-icon">is<wbr>Layer<wbr>Group</a>
 					</li>
