@@ -1,15 +1,16 @@
 import { NextPage } from "next";
 import Head from "next/head";
-import { FabricCanvas } from "../components/FabricCanvas";
+import { DemoAppWrapper } from "../components/DemoAppWrapper";
 
-const basePath = process.env.BASE_PATH.replace(/\/$/, "");
+// const basePath = process.env.BASE_PATH.replace(/\/$/, "");
 
-const Index: NextPage = () => (
+const Index: NextPage = () => {
+  return (
     <>
       <Head>
         <title key="title">
-          fabricjs-layer | A lightweight pressure-sensitive brush
-          implementation for Fabric.js
+          fabricjs-layer | A lightweight pressure-sensitive brush implementation
+          for Fabric.js
         </title>
         <link
           rel="stylesheet"
@@ -28,20 +29,6 @@ const Index: NextPage = () => (
           background: #fff;
           padding: 2em 0 0 0;
         }
-        div.canvas-wrapper {
-          background: #f5f5f5;
-          margin: 2em auto 0 auto;
-          padding: 2em 0;
-        }
-        div.canvas-wrapper > div.canvas {
-          text-align: center;
-          overflow: hidden;
-        }
-        div.canvas-wrapper > div.canvas :global(.canvas-container) {
-          margin: auto;
-          border: 1px solid #eee;
-          background: #fff;
-        }
         footer {
           padding: 2em 0;
         }
@@ -52,8 +39,7 @@ const Index: NextPage = () => (
             <div className="content">
               fabricjs-layer
               <div className="sub header">
-                A simple layer implementation for
-                Fabric.js
+                A simple layer implementation for Fabric.js
               </div>
             </div>
           </h1>
@@ -116,16 +102,7 @@ const Index: NextPage = () => (
             </a>
           </div>
         </div>
-        <div className="canvas-wrapper">
-          <div className="ui container">
-            <h3 className="ui header">Live demo</h3>
-            <p>
-              A simple drawing app.
-            </p>
-            <div className="ui divider"></div>
-          </div>
-          <div className="canvas"><FabricCanvas /></div>
-        </div>
+        <DemoAppWrapper />
       </div>
       <footer>
         <div className="ui container">
@@ -147,6 +124,5 @@ const Index: NextPage = () => (
       {/* <script src={`${basePath}/index.js`}></script> */}
     </>
   );
-;
-
+};
 export default Index;
