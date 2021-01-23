@@ -73,6 +73,8 @@ class App {
     if (!this.canvas) {
       return;
     }
+    this.manager.dispose();
+    this.manager = null;
     this.canvas.dispose();
     this.canvas = null;
     this.brush = null;
