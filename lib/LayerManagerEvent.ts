@@ -1,9 +1,13 @@
 import { LayerIface } from ".";
 
+interface LayerManagerActiveLayerEvent {
+  type: "layer:activate" | "layer:deactivate";
+  layer: LayerIface;
+}
+
 interface LayerManagerLayerEvent {
   type: "layer:add" | "layer:remove";
   layer: LayerIface;
-  event: fabric.IEvent;
 }
 
 interface LayerManagerLayerMoveEvent {
@@ -16,5 +20,6 @@ interface LayerManagerLayerMoveEvent {
 }
 
 export type LayerManagerEvent =
+  | LayerManagerActiveLayerEvent
   | LayerManagerLayerEvent
   | LayerManagerLayerMoveEvent;

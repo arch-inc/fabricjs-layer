@@ -32,6 +32,7 @@ class Layer implements LayerIface {
     this.type = "Layer";
     this.createdTime = Date.now();
     this.startIndex = this.endIndex = canvas._objects.length;
+    this._listeners = [];
   }
 
   public addListener(listener: LayerEventListener): void {

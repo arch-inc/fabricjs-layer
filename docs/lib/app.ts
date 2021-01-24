@@ -22,6 +22,14 @@ class App {
     this.brush.color = value ? "#c00" : "#000";
   }
 
+  public get layerManager() {
+    return this.manager;
+  }
+
+  public get initialized() {
+    return this.canvas && this.brush && this.manager;
+  }
+
   constructor(private el: HTMLCanvasElement) {
     this.initialize();
   }
@@ -42,16 +50,13 @@ class App {
     this.brush.color = "#000";
     canvas.freeDrawingBrush = this.brush;
 
-    // Set property
-    this.canvas = canvas;
-    this.manager = new LayerManager(canvas);
-    console.log("initialized");
-
     // Set listeners
     canvas.on("object:added", ({ target }) => {
       if (!(target instanceof PSStroke)) {
         return;
       }
+
+      // Handle eraser stroke
       if (this.erasing) {
         const path = target;
         path.globalCompositeOperation = "destination-out";
@@ -64,6 +69,10 @@ class App {
     //   // monitor object deletion
     //   console.log("removed", e);
     // });
+
+    // Set properties
+    this.canvas = canvas;
+    this.manager = new LayerManager(canvas);
   }
 
   /**

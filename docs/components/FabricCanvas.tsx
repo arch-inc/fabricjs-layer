@@ -3,13 +3,14 @@ import { App } from "../lib/app";
 
 export interface FabricCanvasProps {
   erasing?: boolean;
+  onAppInit?(app: App): void;
 }
 
 interface DisposableIface {
   dispose(): void;
 }
 
-const FabricCanvas: FC<FabricCanvasProps> = ({ erasing }) => {
+const FabricCanvas: FC<FabricCanvasProps> = ({ erasing, onAppInit }) => {
   // create a canvas element that never gets reloaded
   const ref = useRef<HTMLCanvasElement>();
   const canvas = useMemo(
@@ -22,27 +23,22 @@ const FabricCanvas: FC<FabricCanvasProps> = ({ erasing }) => {
     if (!window || !ref.current) {
       return;
     }
-    let canvas: DisposableIface;
+
+    let myApp: DisposableIface;
     import("../lib/app").then(({ App }) => {
-      canvas = new App(ref.current);
-      setApp(canvas as App);
+      myApp = new App(ref.current);
+      setApp(myApp as App);
     });
-    // import("fabric").then(async ({ fabric }) => {
-    //   // Create a Fabric.js canvas
-    //   const canvas = new fabric.Canvas(ref.current, {
-    //     isDrawingMode: true,
-    //     enablePointerEvents: true
-    //   } as fabric.ICanvasOptions & { enablePointerEvents?: boolean });
-    //
-    //   // Initialize a brush
-    //   const psbrush = await import("@arch-inc/fabricjs-psbrush");
-    //   let brush = new psbrush.PSBrush(canvas);
-    //   brush.width = 10;
-    //   brush.color = "#000";
-    //   canvas.freeDrawingBrush = brush;
-    // });
-    return () => canvas && canvas.dispose();
+
+    return () => myApp && myApp.dispose();
   }, [ref.current]);
+
+  useEffect(() => {
+    if (!app || !app.initialized || !onAppInit) {
+      return;
+    }
+    onAppInit(app);
+  }, [app, onAppInit]);
 
   useEffect(() => {
     if (!app) {
