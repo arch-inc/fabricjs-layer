@@ -144,14 +144,28 @@ class LayerManager implements LayerManagerIface {
   private onObjectAdd(e: fabric.IEvent) {
     const index = getIndexOf(e.target, this.canvas._objects);
 
+    // check object position in the stack
     if (index < this._activeLayer.startIndex) {
       // object needs to be pushed to foreground
+      this.canvas._objects.splice(index, 1);
+      this.canvas._objects.splice(this._activeLayer.endIndex, 0, e.target);
+      this.canvas.renderOnAddRemove && this.canvas.requestRenderAll();
     } else if (index > this._activeLayer.endIndex + 1) {
       // object needs to be pushed to background
+      this.canvas._objects.splice(index, 1);
+      this.canvas._objects.splice(this._activeLayer.endIndex, 0, e.target);
+      this.canvas.renderOnAddRemove && this.canvas.requestRenderAll();
     } else {
       this._activeLayer.endIndex++;
     }
 
+    // increment startIndex and endIndex of subsequent layers
+    for (let i = this.activeLayerIndex + 1; i < this._layers.length; i ++) {
+      this._layers[i].startIndex ++;
+      this._layers[i].endIndex ++;
+    }
+
+    // fire object:add event
     const le: LayerEvent = {
       type: "object:add",
       event: e
