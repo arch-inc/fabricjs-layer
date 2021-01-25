@@ -2,16 +2,18 @@ import { FC, useCallback, useState } from "react";
 import { FabricCanvas } from "./FabricCanvas";
 import { App } from "../lib/app";
 import { LayersList } from "./LayersList";
-
-const activeClass = "ui labeled icon primary button";
-const inactiveClass = "ui labeled icon button";
+import { BrushToggleButtons } from "./BrushToggleButtons";
 
 const DemoAppWrapper: FC = () => {
   const [erasing, setErasing] = useState<boolean>(false);
   const [app, setApp] = useState<App>(null);
 
-  const handleBrushButtonClick = useCallback(() => setErasing(false), []);
-  const handleEraserButtonClick = useCallback(() => setErasing(true), []);
+  const handleLayerAddButtonClick = useCallback(() => {
+    if (!app) {
+      return;
+    }
+    app.layerManager.addLayer();
+  }, [app]);
 
   return (
     <div className="canvas-wrapper">
@@ -43,22 +45,7 @@ const DemoAppWrapper: FC = () => {
       <div className="ui stackable grid">
         <div className="twelve wide column">
           <div className="ui center aligned basic segment">
-            <div className="ui buttons">
-              <button
-                className={erasing ? inactiveClass : activeClass}
-                onClick={handleBrushButtonClick}
-              >
-                <i className="paint brush icon" />
-                Brush
-              </button>
-              <button
-                className={erasing ? activeClass : inactiveClass}
-                onClick={handleEraserButtonClick}
-              >
-                <i className="eraser icon" />
-                Eraser
-              </button>
-            </div>
+            <BrushToggleButtons erasing={erasing} onErasingSet={setErasing} />
             <div className="canvas">
               <FabricCanvas erasing={erasing} onAppInit={setApp} />
             </div>
@@ -70,6 +57,13 @@ const DemoAppWrapper: FC = () => {
               <i className="list icon" />
               <div className="content">Layers</div>
             </h4>
+            <button
+              className="ui labeled icon fluid mini button"
+              onClick={handleLayerAddButtonClick}
+            >
+              <i className="plus icon" />
+              Add layer
+            </button>
             <LayersList app={app} />
           </div>
         </div>

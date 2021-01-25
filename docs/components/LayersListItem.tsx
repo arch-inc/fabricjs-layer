@@ -1,13 +1,20 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useCallback, useEffect, useState } from "react";
 import { LayerIface } from "../../dist";
 import { LayerEventListener } from "../../dist/LayerEventListener";
 
 export interface LayersListItemProps {
   label: string;
   layer: LayerIface;
+  active?: boolean;
+  onLayerSelect?(layer: LayerIface): void;
 }
 
-const LayersListItem: FC<LayersListItemProps> = ({ label, layer }) => {
+const LayersListItem: FC<LayersListItemProps> = ({
+  label,
+  layer,
+  active,
+  onLayerSelect
+}) => {
   const [subLabel, setSubLabel] = useState<string>(null);
 
   useEffect(() => {
@@ -35,9 +42,17 @@ const LayersListItem: FC<LayersListItemProps> = ({ label, layer }) => {
     return () => layer.removeListener(listener);
   }, [layer]);
 
+  const handleLayerSelect = useCallback(
+    () => onLayerSelect && onLayerSelect(layer),
+    [layer, onLayerSelect]
+  );
+
   return (
-    <div className="item">
-      {label} ({subLabel || "-"})
+    <div className="item" onClick={handleLayerSelect}>
+      {active && <i className="check icon" />}
+      <div className="content">
+        {label} ({subLabel || "-"})
+      </div>
     </div>
   );
 };
