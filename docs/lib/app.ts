@@ -39,6 +39,11 @@ class App {
    */
   private initialize() {
     // Create a Fabric.js canvas
+    if (!this.el.parentElement) {
+      throw new Error("Canvas element is not attached to the DOM tree");
+    }
+    this.el.width = Math.min(640, this.el.width);
+    this.el.height = this.el.width;
     const canvas = new fabric.Canvas(this.el, {
       isDrawingMode: true,
       enablePointerEvents: true
