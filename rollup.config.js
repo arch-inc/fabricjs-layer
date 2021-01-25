@@ -17,6 +17,7 @@ export default [
         name: "layer",
         globals: {
           fabric: "fabric",
+          sortedindex: "sortedindex",
           "@arch-inc/fabricjs-psbrush": "psbrush"
         }
       },
@@ -25,6 +26,7 @@ export default [
         format: "es",
         globals: {
           fabric: "fabric",
+          sortedindex: "sortedindex",
           "@arch-inc/fabricjs-psbrush": "psbrush"
         }
       }
