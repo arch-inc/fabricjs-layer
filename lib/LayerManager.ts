@@ -20,7 +20,11 @@ export interface LayerManagerIface {
   readonly layers: LayerIface[];
   readonly layersLength: number;
   findLayer(object: fabric.Object): LayerIface;
+  getLayer(index: number): LayerIface;
+  getLayerIndex(layer: LayerIface): number;
   addLayer(index?: number): LayerIface;
+  removeLayer(layer: LayerIface): boolean;
+  removeLayerByIndex(index: number): void;
   addListener(listener: LayerManagerEventListener): void;
   removeListener(listener: LayerManagerEventListener): boolean;
   dispose(): void;
@@ -105,6 +109,17 @@ class LayerManager implements LayerManagerIface {
     return this._layers[layerIndex];
   }
 
+  public getLayer(index: number): LayerIface {
+    if (index < 0 || index > this._layers.length) {
+      throw new Error("Layer index out of bounds");
+    }
+    return this._layers[index];
+  }
+
+  public getLayerIndex(layer: LayerIface): number {
+    return this._layers.indexOf(layer as Layer);
+  }
+
   public addLayer(index?: number): LayerIface {
     if (typeof index === "number") {
       if (index < 0 || index > this._layers.length) {
@@ -136,6 +151,37 @@ class LayerManager implements LayerManagerIface {
     return layer;
   }
 
+  public removeLayer(layer: LayerIface): boolean {
+    const index = this.getLayerIndex(layer);
+    if (index < 0) {
+      return false;
+    }
+    this.removeLayerByIndex(index);
+    return true;
+  }
+
+  public removeLayerByIndex(index: number) {
+    const layer = this.getLayer(index);
+    this._layers.splice(index, 1);
+
+    // remove objects from canvas
+    const deleteCount = layer.endIndex - layer.startIndex;
+    this.canvas._objects.splice(layer.startIndex, deleteCount);
+    this.canvas.renderOnAddRemove && this.canvas.requestRenderAll();
+
+    // decrement startIndex and endIndex of subsequent layers
+    for (let i = index; i < this._layers.length; i++) {
+      this._layers[i].startIndex -= deleteCount;
+      this._layers[i].endIndex -= deleteCount;
+    }
+
+    // fire event
+    this.fire({
+      type: "layer:remove",
+      layer
+    });
+  }
+
   /**
    * Monitor object addition
    *
@@ -160,9 +206,9 @@ class LayerManager implements LayerManagerIface {
     }
 
     // increment startIndex and endIndex of subsequent layers
-    for (let i = this.activeLayerIndex + 1; i < this._layers.length; i ++) {
-      this._layers[i].startIndex ++;
-      this._layers[i].endIndex ++;
+    for (let i = this.activeLayerIndex + 1; i < this._layers.length; i++) {
+      this._layers[i].startIndex++;
+      this._layers[i].endIndex++;
     }
 
     // fire object:add event
