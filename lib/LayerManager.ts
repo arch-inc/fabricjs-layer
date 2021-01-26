@@ -25,6 +25,7 @@ export interface LayerManagerIface {
   addLayer(index?: number): LayerIface;
   removeLayer(layer: LayerIface): boolean;
   removeLayerByIndex(index: number): void;
+  moveLayer(from: number, to: number): void;
   addListener(listener: LayerManagerEventListener): void;
   removeListener(listener: LayerManagerEventListener): boolean;
   dispose(): void;
@@ -39,20 +40,7 @@ class LayerManager implements LayerManagerIface {
     if (index < 0) {
       throw new Error("Layer not found or managed");
     }
-    if (this._activeLayerIndex === index) {
-      return;
-    }
-    this.fire({
-      type: "layer:deactivate",
-      layer: this._activeLayer
-    });
-
-    this._activeLayerIndex = index;
-    this._activeLayer = value as Layer;
-    this.fire({
-      type: "layer:activate",
-      layer: value
-    });
+    this.activeLayerIndex = index;
   }
   private _activeLayer: Layer;
 
@@ -66,9 +54,12 @@ class LayerManager implements LayerManagerIface {
     if (this._activeLayerIndex === value) {
       return;
     }
-
     this._activeLayerIndex = value;
     this._activeLayer = this._layers[value];
+    this.fire({
+      type: "layer:activate",
+      layer: this._layers[value]
+    });
   }
   private _activeLayerIndex: number;
 
@@ -88,6 +79,7 @@ class LayerManager implements LayerManagerIface {
 
   constructor(private canvas: fabric.StaticCanvas) {
     this._activeLayer = new Layer(canvas);
+    this._activeLayerIndex = 0;
     this._layers = [this._activeLayer];
     this._listeners = [];
     this.onObjectAdd = this.onObjectAdd.bind(this);
@@ -175,11 +167,69 @@ class LayerManager implements LayerManagerIface {
       this._layers[i].endIndex -= deleteCount;
     }
 
+    // update active layer
+    if (index > 0) {
+      this.activeLayerIndex = index - 1;
+    } else {
+      if (this._layers.length <= 0) {
+        this.addLayer(0);
+      }
+      this.activeLayerIndex = 0;
+    }
+
     // fire event
     this.fire({
       type: "layer:remove",
       layer
     });
+  }
+
+  public moveLayer(from: number, to: number) {
+    const layer = this.getLayer(from);
+    this._layers.splice(from, 1);
+
+    // move objects within canvas
+    const objectCount = layer.endIndex - layer.startIndex;
+    const removed = this.canvas._objects.splice(layer.startIndex, objectCount);
+    let toIndex: number;
+    if (to < from) {
+      toIndex = this.getLayer(to).startIndex;
+      this.canvas._objects.splice(toIndex, 0, ...removed);
+
+      // increment startIndex and endIndex of affected layers
+      for (let i = to; i < from; i++) {
+        this._layers[i].startIndex += objectCount;
+        this._layers[i].endIndex += objectCount;
+      }
+    } else {
+      toIndex = this.getLayer(to - 1).endIndex - objectCount;
+      this.canvas._objects.splice(toIndex, 0, ...removed);
+
+      // decrement startIndex and endIndex of affected layers
+      for (let i = from; i < to; i++) {
+        this._layers[i].startIndex -= objectCount;
+        this._layers[i].endIndex -= objectCount;
+      }
+    }
+    // set startIndex and endIndex of moving layer
+    layer.startIndex = toIndex;
+    layer.endIndex = toIndex + objectCount;
+
+    this._layers.splice(to, 0, layer as Layer);
+    this.canvas.renderOnAddRemove && this.canvas.requestRenderAll();
+
+    // fire event
+    this.fire({
+      type: "layer:move",
+      layer,
+      options: {
+        from,
+        to
+      }
+    });
+
+    // update active layer
+    this.activeLayerIndex = to;
   }
 
   /**
