@@ -35,7 +35,9 @@ const LayersListItem: FC<LayersListItemProps> = ({
 
     function updateLabel() {
       const num = layer.endIndex - layer.startIndex;
-      setSubLabel(`${num} object${num > 1 ? "s" : ""}`);
+      setSubLabel(
+        `${layer.startIndex}~${layer.endIndex}; ${num} obj${num > 1 ? "s" : ""}`
+      );
     }
     updateLabel();
     layer.addListener(listener);

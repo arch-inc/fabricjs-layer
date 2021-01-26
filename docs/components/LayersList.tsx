@@ -1,4 +1,4 @@
-import { FC, useCallback, useEffect, useState } from "react";
+import { FC, useCallback, useEffect, useMemo, useState } from "react";
 import { LayerIface } from "../../dist";
 import { LayerManagerEventListener } from "../../dist/LayerManagerEventListener";
 import { App } from "../lib/app";
@@ -40,6 +40,7 @@ const LayersList: FC<LayersListProps> = ({ app }) => {
 
     app.layerManager.addListener(listener);
     setLayers(app.layerManager.layers);
+    setActiveLayer(app.layerManager.activeLayer);
     return () => app?.layerManager && app.layerManager.removeListener(listener);
   }, [app]);
 
@@ -54,13 +55,17 @@ const LayersList: FC<LayersListProps> = ({ app }) => {
     [app]
   );
 
+  const reversedLayers = useMemo(() => (layers ? layers.reverse() : null), [
+    layers
+  ]);
+
   return (
     <div className="ui middle aligned selection list">
-      {layers ? (
-        layers.map((layer, i) => (
+      {reversedLayers ? (
+        reversedLayers.map((layer, i) => (
           <LayersListItem
             key={i}
-            label={`Layer ${i + 1}`}
+            label={`Layer ${layer.createdTime}`}
             layer={layer}
             active={layer === activeLayer}
             onLayerSelect={handleLayerSelect}

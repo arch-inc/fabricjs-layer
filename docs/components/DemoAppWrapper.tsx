@@ -18,6 +18,37 @@ const DemoAppWrapper: FC = () => {
     app.layerManager.addLayer();
   }, [app]);
 
+  const handleLayerMoveUpButtonClick = useCallback(() => {
+    if (!app) {
+      return;
+    }
+    if (
+      app.layerManager.activeLayerIndex >=
+      app.layerManager.layersLength - 1
+    ) {
+      console.log("specified layer is the most foreground");
+      return;
+    }
+    app.layerManager.moveLayer(
+      app.layerManager.activeLayerIndex,
+      app.layerManager.activeLayerIndex + 1
+    );
+  }, [app]);
+
+  const handleLayerMoveDownButtonClick = useCallback(() => {
+    if (!app) {
+      return;
+    }
+    if (app.layerManager.activeLayerIndex <= 0) {
+      console.log("specified layer is the most background");
+      return;
+    }
+    app.layerManager.moveLayer(
+      app.layerManager.activeLayerIndex,
+      app.layerManager.activeLayerIndex - 1
+    );
+  }, [app]);
+
   const colorString = useMemo(() => color.toHexString(), [color]);
 
   return (
@@ -40,6 +71,9 @@ const DemoAppWrapper: FC = () => {
         }
         div.sidebar {
           padding: 1em;
+        }
+        div.add.button {
+          margin-bottom: 1em;
         }
       `}</style>
       <div className="ui container">
@@ -71,13 +105,33 @@ const DemoAppWrapper: FC = () => {
               <i className="list icon" />
               <div className="content">Layers</div>
             </h4>
-            <button
-              className="ui labeled icon fluid mini button"
-              onClick={handleLayerAddButtonClick}
-            >
-              <i className="plus icon" />
-              Add layer
-            </button>
+            <div className="ui list">
+              <div className="item">
+                <button
+                  className="ui labeled icon fluid mini add button"
+                  onClick={handleLayerAddButtonClick}
+                >
+                  <i className="plus icon" />
+                  Add layer
+                </button>
+              </div>
+              <div className="item">
+                <div className="ui fluid buttons">
+                  <button
+                    className="ui icon mini button"
+                    onClick={handleLayerMoveUpButtonClick}
+                  >
+                    <i className="arrow up icon" />
+                  </button>
+                  <button
+                    className="ui icon mini button"
+                    onClick={handleLayerMoveDownButtonClick}
+                  >
+                    <i className="arrow down icon" />
+                  </button>
+                </div>
+              </div>
+            </div>
             <LayersList app={app} />
           </div>
         </div>
