@@ -3,6 +3,7 @@ import { App } from "../lib/app";
 
 export interface FabricCanvasProps {
   erasing?: boolean;
+  brushColor?: string;
   onAppInit?(app: App): void;
 }
 
@@ -10,7 +11,11 @@ interface DisposableIface {
   dispose(): void;
 }
 
-const FabricCanvas: FC<FabricCanvasProps> = ({ erasing, onAppInit }) => {
+const FabricCanvas: FC<FabricCanvasProps> = ({
+  erasing,
+  brushColor,
+  onAppInit
+}) => {
   // create a canvas element that never gets reloaded
   const ref = useRef<HTMLCanvasElement>();
   const canvas = useMemo(
@@ -46,6 +51,13 @@ const FabricCanvas: FC<FabricCanvasProps> = ({ erasing, onAppInit }) => {
     }
     app.erasing = erasing;
   }, [app, erasing]);
+
+  useEffect(() => {
+    if (!app) {
+      return;
+    }
+    app.brushColor = brushColor;
+  }, [app, brushColor]);
 
   return canvas;
 };

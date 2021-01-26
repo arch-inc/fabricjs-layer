@@ -1,4 +1,6 @@
-import { FC, useCallback, useState } from "react";
+import { FC, useCallback, useMemo, useState } from "react";
+import Color from "tinycolor2";
+
 import { FabricCanvas } from "./FabricCanvas";
 import { App } from "../lib/app";
 import { LayersList } from "./LayersList";
@@ -6,6 +8,7 @@ import { BrushToggleButtons } from "./BrushToggleButtons";
 
 const DemoAppWrapper: FC = () => {
   const [erasing, setErasing] = useState<boolean>(false);
+  const [color, setColor] = useState<Color.Instance>(new Color("#000"));
   const [app, setApp] = useState<App>(null);
 
   const handleLayerAddButtonClick = useCallback(() => {
@@ -14,6 +17,8 @@ const DemoAppWrapper: FC = () => {
     }
     app.layerManager.addLayer();
   }, [app]);
+
+  const colorString = useMemo(() => color.toHexString(), [color]);
 
   return (
     <div className="canvas-wrapper">
@@ -45,9 +50,18 @@ const DemoAppWrapper: FC = () => {
       <div className="ui stackable grid">
         <div className="twelve wide column">
           <div className="ui center aligned basic segment">
-            <BrushToggleButtons erasing={erasing} onErasingSet={setErasing} />
+            <BrushToggleButtons
+              erasing={erasing}
+              color={color}
+              onErasingSet={setErasing}
+              onColorUpdate={setColor}
+            />
             <div className="canvas">
-              <FabricCanvas erasing={erasing} onAppInit={setApp} />
+              <FabricCanvas
+                erasing={erasing}
+                brushColor={colorString}
+                onAppInit={setApp}
+              />
             </div>
           </div>
         </div>

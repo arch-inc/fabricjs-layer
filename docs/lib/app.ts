@@ -19,7 +19,19 @@ class App {
     if (!this.brush) {
       return;
     }
-    this.brush.color = value ? "#c00" : "#000";
+    this.brush.color = value ? "#c00" : this.brushColor;
+  }
+
+  private _brushColor: string;
+  public get brushColor() {
+    return this._brushColor || "#000";
+  }
+  public set brushColor(value: string) {
+    this._brushColor = value;
+    if (!this.brush) {
+      return;
+    }
+    this.brush.color = value;
   }
 
   public get layerManager() {
