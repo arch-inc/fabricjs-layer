@@ -11,9 +11,6 @@ import { LayerManagerEvent } from "./LayerManagerEvent";
 import { LayerManagerEventListener } from "./LayerManagerEventListener";
 import { getIndexOf } from "./utils";
 
-const fabricjs: typeof fabric =
-  typeof fabric === "undefined" ? require("fabric").fabric : fabric;
-
 export interface LayerManagerIface {
   activeLayer: LayerIface;
   activeLayerIndex: number;
@@ -326,5 +323,4 @@ class LayerManager implements LayerManagerIface {
   }
 }
 
-// (fabricjs as any).LayerManager = LayerManager;
 export default LayerManager;

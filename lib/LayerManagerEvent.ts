@@ -1,16 +1,16 @@
-import { LayerIface } from ".";
+import { LayerIface } from "./Layer";
 
-interface LayerManagerActiveLayerEvent {
+export interface LayerManagerActiveLayerEvent {
   type: "layer:activate" | "layer:deactivate";
   layer: LayerIface;
 }
 
-interface LayerManagerLayerEvent {
+export interface LayerManagerLayerEvent {
   type: "layer:add" | "layer:remove";
   layer: LayerIface;
 }
 
-interface LayerManagerLayerMoveEvent {
+export interface LayerManagerLayerMoveEvent {
   type: "layer:move";
   layer: LayerIface;
   options: {
