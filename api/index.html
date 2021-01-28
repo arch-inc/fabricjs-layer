@@ -66,9 +66,9 @@
 				<p><a href="https://github.com/arch-inc/fabricjs-layer/actions?query=workflow%3Anpm-publish-gpr"><img src="https://github.com/arch-inc/fabricjs-layer/workflows/npm-publish-gpr/badge.svg" alt="build"></a>
 				<a href="https://www.npmjs.com/package/@arch-inc/fabricjs-layer"><img src="https://img.shields.io/npm/v/@arch-inc/fabricjs-layer" alt="npm version"></a></p>
 				<p><strong>fabricjs-layer</strong> is a simple layer implementation for Fabric.js v3.x and v4.x.</p>
-				<p><strong>fabricjs-layer</strong> は Fabric.js  v3.x および v4.x 用のシンプルなレイヤー実装です。</p>
+				<p><strong>fabricjs-layer</strong> は Fabric.js v3.x および v4.x 用のシンプルなレイヤー実装です。</p>
 				<ul>
-					<li><del>npm package: <a href="https://www.npmjs.com/package/@arch-inc/fabricjs-layer">https://www.npmjs.com/package/@arch-inc/fabricjs-layer</a></del></li>
+					<li>npm package: <a href="https://www.npmjs.com/package/@arch-inc/fabricjs-layer">https://www.npmjs.com/package/@arch-inc/fabricjs-layer</a></li>
 					<li>API document: <a href="https://arch-inc.github.io/fabricjs-layer/api/globals.html">https://arch-inc.github.io/fabricjs-layer/api/globals.html</a></li>
 					<li>Demo site: <a href="https://arch-inc.github.io/fabricjs-layer/">https://arch-inc.github.io/fabricjs-layer/</a></li>
 				</ul>
@@ -79,39 +79,46 @@
 <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://cdnjs.cloudflare.com/ajax/libs/fabric.js/3.6.2/fabric.min.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://cdn.jsdelivr.net/npm/@arch-inc/fabricjs-layer@latest/dist/index.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
-
   <span class="hljs-comment">// Create a Fabric.js canvas</span>
   <span class="hljs-keyword">let</span> canvas = <span class="hljs-keyword">new</span> fabric.Canvas(<span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"main"</span>), {
-    <span class="hljs-attr">isDrawingMode</span>: <span class="hljs-literal">true</span>,
-    <span class="hljs-attr">enablePointerEvents</span>: <span class="hljs-literal">true</span>
+    <span class="hljs-attr">isDrawingMode</span>: <span class="hljs-literal">true</span>
   });
 
+  <span class="hljs-comment">// Create layer manager</span>
+  <span class="hljs-keyword">let</span> manager = <span class="hljs-keyword">new</span> fabricLayer.LayerManager(canvas);
+
   <span class="hljs-comment">// Add layers</span>
-  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i ++; i &lt; <span class="hljs-number">5</span>) {
-    canvas.add(<span class="hljs-keyword">new</span> fabric.LayerGroup([]));
+  <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i++; i &lt; <span class="hljs-number">5</span>) {
+    manager.addLayer();
   }
 
+  <span class="hljs-comment">// Set active layer</span>
+  manager.activeLayer = manager.getLayer(<span class="hljs-number">3</span>);
+
+  <span class="hljs-comment">// Remove layer</span>
+  manager.removeLayer(manager.getLayer(<span class="hljs-number">2</span>));
+
+  <span class="hljs-comment">// Move layer</span>
+  manager.moveLayer(manager.activeLayerIndex, manager.activeLayerIndex + <span class="hljs-number">1</span>);
+
+  <span class="hljs-comment">// Dispose layer manager</span>
+  manager.dispose();
 </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></code></pre>
 				<p>If you use <code>Webpack</code> or other similar solutions, simply install the npm package and start using it.</p>
-				<p>TypeScript definitions are available by default. (e.g., <a href="https://cdn.jsdelivr.net/npm/@arch-inc/fabricjs-layer@latest/dist/LayerGroup.d.ts">LayerGroup.d.ts</a>)</p>
-				<p><code>Webpack</code> 等を使っている場合は <code>npm install</code> でインストールできます。TypeScriptの型定義がついてきます。</p>
+				<p>TypeScript definitions are available by default. (e.g., <a href="https://cdn.jsdelivr.net/npm/@arch-inc/fabricjs-layer@latest/dist/Layer.d.ts">Layer.d.ts</a>)</p>
+				<p><code>Webpack</code> 等を使っている場合は <code>npm install</code> でインストールできます。TypeScript の型定義がついてきます。</p>
 				<pre><code class="language-sh">npm i @arch-inc/fabricjs-layer</code></pre>
-				<pre><code class="language-javascript"><span class="hljs-keyword">import</span> { LayerGroup } <span class="hljs-keyword">from</span> <span class="hljs-string">"@arch-inc/fabricjs-layer"</span></code></pre>
-				<a href="#api-documentation--apiドキュメント" id="api-documentation--apiドキュメント" style="color: inherit; text-decoration: none;">
-					<h3>API Documentation / APIドキュメント</h3>
+				<pre><code class="language-javascript"><span class="hljs-keyword">import</span> { LayerGroup } <span class="hljs-keyword">from</span> <span class="hljs-string">"@arch-inc/fabricjs-layer"</span>;</code></pre>
+				<a href="#api-documentation--api-ドキュメント" id="api-documentation--api-ドキュメント" style="color: inherit; text-decoration: none;">
+					<h3>API Documentation / API ドキュメント</h3>
 				</a>
 				<p>All of the exported classes and interfaces are listed in <a href="https://arch-inc.github.io/fabricjs-layer/api/globals.html">TypeDoc</a>.</p>
-				<p>For instance, <code>LayerGroup</code> can be constructed by <a href="https://arch-inc.github.io/fabricjs-layer/api/globals.html#layergroup"><code>new LayerGroup([])</code></a> and its instance has <a href="https://arch-inc.github.io/fabricjs-layer/api/interfaces/layergroupiface.html">various properties</a>. Use of these properties can be observed in <a href="https://gs.archinc.jp/">Griffith Sketch</a>, a web-based lightweight tool for sketching ideas.</p>
-				<p>Please note that <code>LayerGroup</code> is listed as variables and their fields are defined separately as <code>LayerGroupIface</code>. This is because Fabric.js requires all relevant classes to be defined through its <code>fabric.util.createClass</code> helper function.</p>
 				<p>このモジュールが export しているすべてのクラスとインタフェースは <a href="https://arch-inc.github.io/fabricjs-layer/api/globals.html">TypeDoc</a> で閲覧できます。</p>
-				<p>例えば <code>LayerGroup</code> クラスは <a href="https://arch-inc.github.io/fabricjs-layer/api/globals.html#layergroup"><code>new LayerGroup([])</code></a> のようにインスタンス化でき、 <a href="https://arch-inc.github.io/fabricjs-layer/api/interfaces/layergroupiface.html">さまざまなプロパティ</a> を持っています。これらのプロパティの実際の利用例は、アイデアスケッチ作成用のWebサービス <a href="https://gs.archinc.jp/">Griffith Sketch</a> で確認できます。</p>
-				<p>なお、 <code>PSBrush</code> と <code>PSStroke</code> は実際にはクラスですが変数 (Variables) としてリストアップされ、メンバー変数は <code>LayerGroupIface</code> という別のインタフェースで定義されています。これは Fabric.js 本体がクラス定義を <code>fabric.util.createClass</code> というヘルパー関数で行うように実装されているためです。</p>
 				<a href="#credits--開発者" id="credits--開発者" style="color: inherit; text-decoration: none;">
 					<h3>Credits / 開発者</h3>
 				</a>
 				<ul>
 					<li><a href="https://junkato.jp">Jun Kato</a>, developer</li>
-					<li><a href="https://github.com/fabricjs/fabric.js/graphs/contributors">And all the other GitHub contributors in the original Fabric.js implementation</a></li>
 				</ul>
 				<a href="#staying-in-touch--開発者に連絡" id="staying-in-touch--開発者に連絡" style="color: inherit; text-decoration: none;">
 					<h3>Staying in touch / 開発者に連絡</h3>
@@ -125,10 +132,9 @@
 				</a>
 				<ul>
 					<li><a href="https://arch-inc.github.io/fabricjs-layer/">Demo site</a>: GitHub Pages accompanied with this library</li>
-					<li><a href="https://gs.archinc.jp/">Griffith Sketch</a>: a web-based lightweight tool for sketching ideas.</li>
 				</ul>
 				<hr>
-				<p>Copyright (c) 2020 Arch Inc. (Jun Kato)</p>
+				<p>Copyright (c) 2021 Arch Inc. (Jun Kato)</p>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -148,13 +154,31 @@
 						<a href="classes/layermanager.html" class="tsd-kind-icon">Layer<wbr>Manager</a>
 					</li>
 					<li class=" tsd-kind-interface">
+						<a href="interfaces/layerevent.html" class="tsd-kind-icon">Layer<wbr>Event</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/layereventlistener.html" class="tsd-kind-icon">Layer<wbr>Event<wbr>Listener</a>
+					</li>
+					<li class=" tsd-kind-interface">
 						<a href="interfaces/layeriface.html" class="tsd-kind-icon">Layer<wbr>Iface</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/layermanageractivelayerevent.html" class="tsd-kind-icon">Layer<wbr>Manager<wbr>Active<wbr>Layer<wbr>Event</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/layermanagereventlistener.html" class="tsd-kind-icon">Layer<wbr>Manager<wbr>Event<wbr>Listener</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/layermanagerlayerevent.html" class="tsd-kind-icon">Layer<wbr>Manager<wbr>Layer<wbr>Event</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/layermanagerlayermoveevent.html" class="tsd-kind-icon">Layer<wbr>Manager<wbr>Layer<wbr>Move<wbr>Event</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#layermanagerevent" class="tsd-kind-icon">Layer<wbr>Manager<wbr>Event</a>
 					</li>
 					<li class=" tsd-kind-function tsd-has-type-parameter">
 						<a href="globals.html#getindexof" class="tsd-kind-icon">get<wbr>Index<wbr>Of</a>
-					</li>
-					<li class=" tsd-kind-function">
-						<a href="globals.html#islayergroup" class="tsd-kind-icon">is<wbr>Layer<wbr>Group</a>
 					</li>
 				</ul>
 			</nav>
