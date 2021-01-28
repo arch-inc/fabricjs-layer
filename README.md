@@ -16,6 +16,7 @@
 ```html
 <canvas id="main" width="720" height="480"></canvas>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/3.6.2/fabric.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sortedindex@latest/dist/index.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@arch-inc/fabricjs-layer@latest/dist/index.js"></script>
 <script>
   // Create a Fabric.js canvas
