@@ -1,6 +1,5 @@
 import { FC, useCallback, useEffect, useMemo, useState } from "react";
-import { LayerIface } from "../../dist";
-import { LayerManagerEventListener } from "../../dist/LayerManagerEventListener";
+import { LayerIface, LayerManagerEventListener } from "../../";
 import { App } from "../lib/app";
 
 import { LayersListItem } from "./LayersListItem";

@@ -82,10 +82,6 @@ class App {
         path.evented = false;
       }
     });
-    // canvas.on("object:removed", (e) => {
-    //   // monitor object deletion
-    //   console.log("removed", e);
-    // });
 
     // Set properties
     this.canvas = canvas;

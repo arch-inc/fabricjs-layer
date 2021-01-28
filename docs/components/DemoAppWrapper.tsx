@@ -1,8 +1,8 @@
 import { FC, useCallback, useMemo, useState } from "react";
 import Color from "tinycolor2";
+import { App } from "../lib/app";
 
 import { FabricCanvas } from "./FabricCanvas";
-import { App } from "../lib/app";
 import { LayersList } from "./LayersList";
 import { BrushToggleButtons } from "./BrushToggleButtons";
 

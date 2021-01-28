@@ -1,6 +1,5 @@
 import { FC, useCallback, useEffect, useState } from "react";
-import { LayerIface } from "../../dist";
-import { LayerEventListener } from "../../dist/LayerEventListener";
+import { LayerIface, LayerEventListener } from "../../";
 
 export interface LayersListItemProps {
   label: string;
