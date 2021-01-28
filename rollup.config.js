@@ -14,7 +14,7 @@ export default [
       {
         file: pkg.main,
         format: "umd",
-        name: "layer",
+        name: "fabricLayer",
         globals: {
           fabric: "fabric",
           sortedindex: "sortedindex",
