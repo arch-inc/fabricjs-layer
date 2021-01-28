@@ -5,9 +5,9 @@
 
 **fabricjs-layer** is a simple layer implementation for Fabric.js v3.x and v4.x.
 
-**fabricjs-layer** は Fabric.js  v3.x および v4.x 用のシンプルなレイヤー実装です。
+**fabricjs-layer** は Fabric.js v3.x および v4.x 用のシンプルなレイヤー実装です。
 
-- ~~npm package: https://www.npmjs.com/package/@arch-inc/fabricjs-layer~~
+- npm package: https://www.npmjs.com/package/@arch-inc/fabricjs-layer
 - API document: https://arch-inc.github.io/fabricjs-layer/api/globals.html
 - Demo site: https://arch-inc.github.io/fabricjs-layer/
 
@@ -18,53 +18,56 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/3.6.2/fabric.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@arch-inc/fabricjs-layer@latest/dist/index.js"></script>
 <script>
-
   // Create a Fabric.js canvas
   let canvas = new fabric.Canvas(document.getElementById("main"), {
-    isDrawingMode: true,
-    enablePointerEvents: true
+    isDrawingMode: true
   });
 
+  // Create layer manager
+  let manager = new fabricLayer.LayerManager(canvas);
+
   // Add layers
-  for (let i = 0; i ++; i < 5) {
-    canvas.add(new fabric.LayerGroup([]));
+  for (let i = 0; i++; i < 5) {
+    manager.addLayer();
   }
 
+  // Set active layer
+  manager.activeLayer = manager.getLayer(3);
+
+  // Remove layer
+  manager.removeLayer(manager.getLayer(2));
+
+  // Move layer
+  manager.moveLayer(manager.activeLayerIndex, manager.activeLayerIndex + 1);
+
+  // Dispose layer manager
+  manager.dispose();
 </script>
 ```
 
 If you use `Webpack` or other similar solutions, simply install the npm package and start using it.
 
-TypeScript definitions are available by default. (e.g., [LayerGroup.d.ts](https://cdn.jsdelivr.net/npm/@arch-inc/fabricjs-layer@latest/dist/LayerGroup.d.ts))
+TypeScript definitions are available by default. (e.g., [Layer.d.ts](https://cdn.jsdelivr.net/npm/@arch-inc/fabricjs-layer@latest/dist/Layer.d.ts))
 
-`Webpack` 等を使っている場合は `npm install` でインストールできます。TypeScriptの型定義がついてきます。
+`Webpack` 等を使っている場合は `npm install` でインストールできます。TypeScript の型定義がついてきます。
 
 ```sh
 npm i @arch-inc/fabricjs-layer
 ```
 
 ```javascript
-import { LayerGroup } from "@arch-inc/fabricjs-layer"
+import { LayerGroup } from "@arch-inc/fabricjs-layer";
 ```
 
-### API Documentation / APIドキュメント
+### API Documentation / API ドキュメント
 
 All of the exported classes and interfaces are listed in [TypeDoc](https://arch-inc.github.io/fabricjs-layer/api/globals.html).
 
-For instance, `LayerGroup` can be constructed by [`new LayerGroup([])`](https://arch-inc.github.io/fabricjs-layer/api/globals.html#layergroup) and its instance has [various properties](https://arch-inc.github.io/fabricjs-layer/api/interfaces/layergroupiface.html). Use of these properties can be observed in [Griffith Sketch](https://gs.archinc.jp/), a web-based lightweight tool for sketching ideas.
-
-Please note that `LayerGroup` is listed as variables and their fields are defined separately as `LayerGroupIface`. This is because Fabric.js requires all relevant classes to be defined through its `fabric.util.createClass` helper function.
-
 このモジュールが export しているすべてのクラスとインタフェースは [TypeDoc](https://arch-inc.github.io/fabricjs-layer/api/globals.html) で閲覧できます。
-
-例えば `LayerGroup` クラスは [`new LayerGroup([])`](https://arch-inc.github.io/fabricjs-layer/api/globals.html#layergroup) のようにインスタンス化でき、 [さまざまなプロパティ](https://arch-inc.github.io/fabricjs-layer/api/interfaces/layergroupiface.html) を持っています。これらのプロパティの実際の利用例は、アイデアスケッチ作成用のWebサービス [Griffith Sketch](https://gs.archinc.jp/) で確認できます。
-
-なお、 `PSBrush` と `PSStroke` は実際にはクラスですが変数 (Variables) としてリストアップされ、メンバー変数は `LayerGroupIface` という別のインタフェースで定義されています。これは Fabric.js 本体がクラス定義を `fabric.util.createClass` というヘルパー関数で行うように実装されているためです。
 
 ### Credits / 開発者
 
 - [Jun Kato](https://junkato.jp), developer
-- [And all the other GitHub contributors in the original Fabric.js implementation](https://github.com/fabricjs/fabric.js/graphs/contributors)
 
 ### Staying in touch / 開発者に連絡
 
@@ -74,7 +77,7 @@ Please note that `LayerGroup` is listed as variables and their fields are define
 ### Library in action / 利用例
 
 - [Demo site](https://arch-inc.github.io/fabricjs-layer/): GitHub Pages accompanied with this library
-- [Griffith Sketch](https://gs.archinc.jp/): a web-based lightweight tool for sketching ideas.
 
 ---
-Copyright (c) 2020 Arch Inc. (Jun Kato)
+
+Copyright (c) 2021 Arch Inc. (Jun Kato)
