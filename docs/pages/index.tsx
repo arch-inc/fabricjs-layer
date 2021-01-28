@@ -88,18 +88,6 @@ const Index: NextPage = () => {
                 </div>
               </div>
             </a>
-            <a
-              className="item"
-              href="https://arch-inc.github.io/fabricjs-layer/index.js"
-            >
-              <i className="file code outline icon"></i>
-              <div className="content">
-                <div className="header">index.js</div>
-                <div className="description">
-                  example code loaded in this page
-                </div>
-              </div>
-            </a>
           </div>
         </div>
         <DemoAppWrapper />
@@ -108,7 +96,7 @@ const Index: NextPage = () => {
         <div className="ui container">
           <div className="ui horizontal divided list">
             <div className="item">
-              &copy; <a href="//research.archinc.jp">Arch Inc.</a> 2020
+              &copy; <a href="//research.archinc.jp">Arch Inc.</a> 2021
             </div>
             <div className="item">
               <a href="https://github.com/arch-inc/fabricjs-layer">
@@ -118,10 +106,6 @@ const Index: NextPage = () => {
           </div>
         </div>
       </footer>
-      {/* <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/3.6.2/fabric.min.js"></script> */}
-      {/* <script src="https://unpkg.com/@arch-inc/fabricjs-psbrush@0.0.15/dist/index.js"></script> */}
-      {/* <script src={`${basePath}/lib.js`}></script> */}
-      {/* <script src={`${basePath}/index.js`}></script> */}
     </>
   );
 };

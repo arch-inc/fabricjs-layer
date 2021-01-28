@@ -78,7 +78,11 @@ const DemoAppWrapper: FC = () => {
       `}</style>
       <div className="ui container">
         <h3 className="ui header">Live demo</h3>
-        <p>A simple drawing app.</p>
+        <p>
+          A simple drawing app with layer support. (Eraser would NOT work as
+          intended due to the Fabric.js specification. It is utilizing{" "}
+          <code>globalCompositeOperation</code>.)
+        </p>
         <div className="ui divider"></div>
       </div>
       <div className="ui stackable grid">
