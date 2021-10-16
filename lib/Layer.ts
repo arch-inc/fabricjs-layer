@@ -8,6 +8,9 @@
 import { LayerEvent } from "./LayerEvent";
 import { LayerEventListener } from "./LayerEventListener";
 
+/**
+ * Layer representation
+ */
 export interface LayerIface {
   type: "Layer";
   createdTime: number;
