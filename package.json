@@ -8,7 +8,7 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "run-s build:lib next",
+    "build": "run-s build:lib build:docs",
     "build:docs": "run-s next typedoc",
     "build:lib": "cross-env NODE_ENV=production rollup -c",
     "clean": "run-p clean:*",
