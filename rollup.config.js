@@ -1,8 +1,9 @@
 import typescript from "rollup-plugin-typescript2";
 import { terser } from "rollup-plugin-terser";
+import copy from "rollup-plugin-copy";
 import pkg from "./package.json";
 
-const checkComments = function(_node, comment) {
+const comments = function(_node, comment) {
   const { value, type } = comment;
   return type === "comment2" && /@preserve|@license/i.test(value);
 };
@@ -42,8 +43,14 @@ export default [
       }),
       terser({
         output: {
-          comments: checkComments
+          comments
         }
+      }),
+      copy({
+        targets: [
+          { src: "dist/index.js", dest: "docs/public", rename: "lib.js" }
+        ],
+        hook: "writeBundle"
       })
     ]
   }
