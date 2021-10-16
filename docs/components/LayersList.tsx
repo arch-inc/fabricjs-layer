@@ -40,7 +40,9 @@ const LayersList: FC<LayersListProps> = ({ app }) => {
     app.layerManager.addListener(listener);
     setLayers(app.layerManager.layers);
     setActiveLayer(app.layerManager.activeLayer);
-    return () => app?.layerManager && app.layerManager.removeListener(listener);
+    return () => {
+      app?.layerManager && app.layerManager.removeListener(listener);
+    };
   }, [app]);
 
   const handleLayerSelect = useCallback(

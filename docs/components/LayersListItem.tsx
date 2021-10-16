@@ -40,7 +40,9 @@ const LayersListItem: FC<LayersListItemProps> = ({
     }
     updateLabel();
     layer.addListener(listener);
-    return () => layer.removeListener(listener);
+    return () => {
+      layer.removeListener(listener);
+    };
   }, [layer]);
 
   const handleLayerSelect = useCallback(
