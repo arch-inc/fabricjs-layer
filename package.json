@@ -47,7 +47,7 @@
     "sortedindex": "^0.1.0"
   },
   "devDependencies": {
-    "@arch-inc/fabricjs-psbrush": "0.0.18",
+    "@arch-inc/fabricjs-psbrush": "^0.0.20",
     "@types/fabric": "^4.5.6",
     "@types/react": "^17.0.30",
     "@types/tinycolor2": "^1.4.2",
