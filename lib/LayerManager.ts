@@ -234,7 +234,11 @@ class LayerManager implements LayerManagerIface {
 
     // remove objects from canvas
     const deleteCount = layer.endIndex - layer.startIndex;
-    this.canvas._objects.splice(layer.startIndex, deleteCount);
+    const deletedObjects = this.canvas._objects.splice(
+      layer.startIndex,
+      deleteCount
+    );
+    deletedObjects.forEach(d => this.canvas["_onObjectRemoved"](d), this);
     this.canvas.renderOnAddRemove && this.canvas.requestRenderAll();
 
     // decrement startIndex and endIndex of subsequent layers
