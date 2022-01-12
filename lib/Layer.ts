@@ -1,5 +1,5 @@
 /*!
- * Copyright (c) 2020 Arch Inc. (Jun Kato)
+ * Copyright (c) 2020-2022 Arch Inc. (Jun Kato)
  *
  * fabricjs-layer, lightweight layer management for Fabric.js
  * @license MIT

@@ -96,7 +96,7 @@ const Index: NextPage = () => {
         <div className="ui container">
           <div className="ui horizontal divided list">
             <div className="item">
-              &copy; <a href="//research.archinc.jp">Arch Inc.</a> 2021
+              &copy; <a href="//research.archinc.jp">Arch Inc.</a> 2021-2022
             </div>
             <div className="item">
               <a href="https://github.com/arch-inc/fabricjs-layer">

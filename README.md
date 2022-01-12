@@ -81,4 +81,4 @@ All of the exported classes and interfaces are listed in [TypeDoc](https://arch-
 
 ---
 
-Copyright (c) 2021 Arch Inc. (Jun Kato)
+Copyright (c) 2020-2022 Arch Inc. (Jun Kato)
