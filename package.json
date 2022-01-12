@@ -43,12 +43,12 @@
   },
   "homepage": "https://github.com/arch-inc/fabricjs-layer#readme",
   "dependencies": {
-    "fabric": "^4.0.0-beta.7",
+    "fabric": "^4.6.0",
     "sortedindex": "^0.1.0"
   },
   "devDependencies": {
     "@arch-inc/fabricjs-psbrush": "0.0.18",
-    "@types/fabric": "^3.6.2",
+    "@types/fabric": "^4.5.6",
     "@types/react": "^17.0.30",
     "@types/tinycolor2": "^1.4.2",
     "cross-env": "^7.0.3",
