@@ -1,6 +1,6 @@
 !function(e,t){"object"==typeof exports&&"undefined"!=typeof module?t(exports,require("sortedindex")):"function"==typeof define&&define.amd?define(["exports","sortedindex"],t):t((e="undefined"!=typeof globalThis?globalThis:e||self).fabricLayer={},e.sortedindex)}(this,(function(e,t){"use strict";
 /*!
-   * Copyright (c) 2020 Arch Inc. (Jun Kato)
+   * Copyright (c) 2020-2022 Arch Inc. (Jun Kato)
    *
    * fabricjs-layer, lightweight layer management for Fabric.js
    * @license MIT
